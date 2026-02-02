@@ -296,12 +296,37 @@
               </p>
             </div>
             <div class="rpmr-cta-actions">
-              <a
-                class="rpmr-btn rpmr-primary"
-                href="mailto:no-reply@question-app.pbrosen.com"
-                >Email Us</a
-              >
-              <a class="rpmr-btn" href="#top">Back to top</a>
+              <form id="rpmr-contact-form" class="rpmr-form" autocomplete="off">
+                <div class="rpmr-form-group">
+                  <label for="rpmr-name">Name<span style="color:#f472b6">*</span></label>
+                  <input type="text" id="rpmr-name" name="name" required autocomplete="name" />
+                </div>
+                <div class="rpmr-form-group">
+                  <label for="rpmr-email">Email<span style="color:#f472b6">*</span></label>
+                  <input type="email" id="rpmr-email" name="email" required autocomplete="email" />
+                </div>
+                <div class="rpmr-form-group">
+                  <label for="rpmr-phone">Phone</label>
+                  <input type="tel" id="rpmr-phone" name="phone" autocomplete="tel" />
+                </div>
+                <div class="rpmr-form-group">
+                  <label for="rpmr-interest">What are you interested in?<span style="color:#f472b6">*</span></label>
+                  <select id="rpmr-interest" name="interest" required>
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="game">Create a Game</option>
+                    <option value="app">Create an App</option>
+                    <option value="website">Create a Website</option>
+                    <option value="tool">Custom Tool</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div class="rpmr-form-group">
+                  <label for="rpmr-message">Message</label>
+                  <textarea id="rpmr-message" name="message" rows="3" placeholder="Tell us more..."></textarea>
+                </div>
+                <button type="submit" class="rpmr-btn rpmr-primary" style="width:100%">Submit</button>
+                <div id="rpmr-form-status" class="rpmr-form-status" style="margin-top:10px;"></div>
+              </form>
             </div>
           </div>
         </div>

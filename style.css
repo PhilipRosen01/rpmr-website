@@ -1,3 +1,7 @@
+/* =========================
+   Global Reset & Variables
+   ========================= */
+
 /* Global reset to ensure the site truly fills the viewport */
 *,
 *::before,
@@ -72,11 +76,19 @@ html {
   text-decoration: none;
 }
 
+/* =========================
+   Layout Containers
+   ========================= */
+
 /* Container */
 .rpmr-container {
   width: min(var(--max), 92vw);
   margin: 0 auto;
 }
+
+/* =========================
+   Background Effects
+   ========================= */
 
 /* Background effects */
 .rpmr-bg-grid {
@@ -129,6 +141,10 @@ html {
     transform: translate3d(0, -18px, 0) scale(1.03);
   }
 }
+
+/* =========================
+   Header & Navigation
+   ========================= */
 
 /* Header */
 .rpmr-header {
@@ -274,6 +290,10 @@ html {
   transform: translateY(0);
 }
 
+/* =========================
+   Hero Section
+   ========================= */
+
 /* Hero */
 .rpmr-hero {
   padding: 72px 0 36px;
@@ -341,7 +361,10 @@ html {
   margin-top: 18px;
 }
 
-/* Buttons */
+/* =========================
+   Buttons
+   ========================= */
+
 .rpmr-btn {
   display: inline-flex;
   align-items: center;
@@ -380,7 +403,10 @@ html {
   filter: brightness(1.06);
 }
 
-/* Hero card */
+/* =========================
+   Hero Card
+   ========================= */
+
 .rpmr-hero-card {
   border-radius: var(--r);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -429,6 +455,10 @@ html {
   line-height: 1.6;
   font-size: 14px;
 }
+
+/* =========================
+   Metrics & Chips
+   ========================= */
 
 .rpmr-metrics {
   display: grid;
@@ -487,7 +517,10 @@ html {
   border-color: rgba(255, 255, 255, 0.16);
 }
 
-/* Sections */
+/* =========================
+   Sections & Titles
+   ========================= */
+
 .rpmr-section {
   padding: 54px 0;
   position: relative;
@@ -521,7 +554,10 @@ html {
   font-size: 14.5px;
 }
 
-/* Cards grid */
+/* =========================
+   Cards Grid
+   ========================= */
+
 .rpmr-grid3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -578,81 +614,10 @@ html {
   font-size: 13.8px;
 }
 
-.rpmr-icon {
-  width: 42px;
-  height: 42px;
-  border-radius: 16px;
-  background:
-    radial-gradient(
-      16px 16px at 30% 30%,
-      rgba(255, 255, 255, 0.28),
-      transparent 60%
-    ),
-    linear-gradient(135deg, rgba(34, 211, 238, 0.55), rgba(124, 58, 237, 0.55));
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
-  margin-bottom: 12px;
-}
-.rpmr-icon-alt1 {
-  background: linear-gradient(
-    135deg,
-    rgba(52, 211, 153, 0.55),
-    rgba(34, 211, 238, 0.55)
-  );
-}
-.rpmr-icon-alt2 {
-  background: linear-gradient(
-    135deg,
-    rgba(244, 114, 182, 0.55),
-    rgba(124, 58, 237, 0.55)
-  );
-}
-.rpmr-icon-alt3 {
-  background: linear-gradient(
-    135deg,
-    rgba(34, 211, 238, 0.55),
-    rgba(52, 211, 153, 0.55)
-  );
-}
-.rpmr-icon-alt4 {
-  background: linear-gradient(
-    135deg,
-    rgba(124, 58, 237, 0.55),
-    rgba(244, 114, 182, 0.55)
-  );
-}
-.rpmr-icon-alt5 {
-  background: linear-gradient(
-    135deg,
-    rgba(244, 114, 182, 0.55),
-    rgba(34, 211, 238, 0.55)
-  );
-}
+/* =========================
+   Projects Section
+   ========================= */
 
-.rpmr-inline {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 14px;
-  color: rgba(255, 255, 255, 0.82);
-  font-weight: 600;
-  font-size: 13px;
-  padding: 8px 10px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.04);
-  transition:
-    transform 0.18s ease,
-    background 0.18s ease,
-    border-color 0.18s ease;
-}
-.rpmr-inline:hover {
-  transform: translateY(-2px);
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.16);
-}
-
-/* Projects */
 .rpmr-projects {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
@@ -704,7 +669,10 @@ html {
   font-size: 13.6px;
 }
 
-/* Side panel */
+/* =========================
+   Side Panel
+   ========================= */
+
 .rpmr-side-panel {
   border-radius: var(--r);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -757,7 +725,10 @@ html {
   margin-top: 14px;
 }
 
-/* CTA Block */
+/* =========================
+   CTA Block (Contact Section)
+   ========================= */
+
 .rpmr-cta-block {
   border-radius: calc(var(--r) + 6px);
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -826,11 +797,66 @@ html {
 }
 .rpmr-cta-actions {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+.rpmr-form {
+  flex: 1 1 auto;
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 24px 20px;
+  margin: 0;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.rpmr-cta-actions {
+  display: flex;
   gap: 12px;
   flex-wrap: wrap;
 }
+@media (min-width: 768px) {
+  .rpmr-cta-block {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 48px;
+  }
+  .rpmr-cta-block > div:first-child {
+    flex: 1 1 0;
+    max-width: 420px;
+  }
+  .rpmr-cta-actions {
+    flex: 1 1 0;
+    max-width: 520px;
+    min-width: 340px;
+  }
+  .rpmr-form {
+    max-width: 100%;
+    min-width: 320px;
+  }
+}
+@media (min-width: 1100px) {
+  .rpmr-cta-block {
+    gap: 80px;
+  }
+  .rpmr-cta-actions {
+    max-width: 600px;
+  }
+}
 
-/* Footer */
+/* =========================
+   Footer
+   ========================= */
+
 .rpmr-footer {
   padding: 34px 0 44px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
@@ -867,7 +893,7 @@ html {
 }
 
 /* =========================
-   Scroll reveal animations (CSS only, modern browsers)
+   Scroll Reveal Animations
    ========================= */
 @supports (animation-timeline: view()) {
   .rpmr-reveal {
@@ -915,7 +941,9 @@ html {
   }
 }
 
-/* Motion accessibility */
+/* =========================
+   Motion Accessibility
+   ========================= */
 @media (prefers-reduced-motion: reduce) {
   .rpmr-site * {
     animation-duration: 0.001ms !important;
@@ -933,7 +961,9 @@ html {
   }
 }
 
-/* Responsive */
+/* =========================
+   Responsive Styles
+   ========================= */
 @media (max-width: 920px) {
   .rpmr-hero-grid {
     grid-template-columns: 1fr;
@@ -1096,6 +1126,7 @@ html {
     color: rgba(255, 255, 255, 0.86);
   }
 }
+
 /* Fix: prevent nested scroll containers inside the RPMR page */
 
 .rpmr-site {
@@ -1137,5 +1168,63 @@ html {
 @media (min-width: 768px) {
   .rpmr-burger {
     display: none !important;
+  }
+}
+
+/* =========================
+   Contact Form
+   ========================= */
+.rpmr-form {
+  background: var(--card2);
+  border-radius: 18px;
+  padding: 15px;
+  box-shadow: var(--shadow2);
+  max-width: 620px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.rpmr-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.rpmr-form label {
+  font-size: 1rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+.rpmr-form input,
+.rpmr-form select,
+.rpmr-form textarea {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--text);
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border 0.18s;
+}
+.rpmr-form input:focus,
+.rpmr-form select:focus,
+.rpmr-form textarea:focus {
+  outline: none;
+  border-color: var(--a);
+}
+.rpmr-form textarea {
+  resize: vertical;
+  min-height: 60px;
+  max-height: 180px;
+}
+.rpmr-form-status {
+  font-size: 0.98rem;
+  color: var(--c);
+  min-height: 1.2em;
+}
+@media (max-width: 600px) {
+  .rpmr-form {
+    padding: 18px 6vw 12px 6vw;
   }
 }
