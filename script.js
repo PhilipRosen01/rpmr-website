@@ -158,7 +158,7 @@
     mixBlendMode: 'lighten',
     opacity: '0.7',
     transition: 'transform 0.18s cubic-bezier(.4,2,.6,1), opacity 0.18s',
-    transform: 'translate(-50%, -50%) scale(1)',
+    transform: 'translate(-18px, -18px) scale(1)', // Center the cursor
     willChange: 'transform, opacity',
   });
 
@@ -168,7 +168,7 @@
   let lastMove = Date.now();
 
   function animateCursor(x, y) {
-    cursor.style.transform = `translate(${x}px, ${y}px) scale(1.08)`;
+    cursor.style.transform = `translate(${x - 18}px, ${y - 18}px) scale(1.08)`;
     cursor.style.opacity = '1';
     cursor.style.filter = `blur(${Math.min(8, Math.abs(x - lastX) / 8 + Math.abs(y - lastY) / 8)}px)`;
     lastX = x;
@@ -189,7 +189,7 @@
   // Animate a pulse when mouse is still
   setInterval(() => {
     if (Date.now() - lastMove > 400) {
-      cursor.style.transform = `translate(${lastX}px, ${lastY}px) scale(1.18)`;
+      cursor.style.transform = `translate(${lastX - 18}px, ${lastY - 18}px) scale(1.18)`;
       cursor.style.opacity = '0.5';
       cursor.style.filter = 'blur(10px)';
     }
