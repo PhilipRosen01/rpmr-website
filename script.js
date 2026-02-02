@@ -135,3 +135,66 @@
     }, 1200);
   });
 })();
+
+// Creative animated cursor effect
+(() => {
+  // Create the custom cursor element
+  const cursor = document.createElement('div');
+  cursor.id = 'rpmr-cursor';
+  document.body.appendChild(cursor);
+
+  // Style the cursor via JS for flexibility
+  Object.assign(cursor.style, {
+    position: 'fixed',
+    top: '0',
+    left: '0',
+    width: '36px',
+    height: '36px',
+    borderRadius: '50%',
+    pointerEvents: 'none',
+    zIndex: '9999',
+    background: 'radial-gradient(circle at 30% 30%, #7c3aed88 60%, #22d3ee33 100%)',
+    boxShadow: '0 0 24px 8px #7c3aed55, 0 0 0 2px #22d3ee55',
+    mixBlendMode: 'lighten',
+    opacity: '0.7',
+    transition: 'transform 0.18s cubic-bezier(.4,2,.6,1), opacity 0.18s',
+    transform: 'translate(-50%, -50%) scale(1)',
+    willChange: 'transform, opacity',
+  });
+
+  let lastX = window.innerWidth / 2;
+  let lastY = window.innerHeight / 2;
+  let ticking = false;
+  let lastMove = Date.now();
+
+  function animateCursor(x, y) {
+    cursor.style.transform = `translate(${x}px, ${y}px) scale(1.08)`;
+    cursor.style.opacity = '1';
+    cursor.style.filter = `blur(${Math.min(8, Math.abs(x - lastX) / 8 + Math.abs(y - lastY) / 8)}px)`;
+    lastX = x;
+    lastY = y;
+    lastMove = Date.now();
+  }
+
+  document.addEventListener('mousemove', (e) => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        animateCursor(e.clientX, e.clientY);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+
+  // Animate a pulse when mouse is still
+  setInterval(() => {
+    if (Date.now() - lastMove > 400) {
+      cursor.style.transform = `translate(${lastX}px, ${lastY}px) scale(1.18)`;
+      cursor.style.opacity = '0.5';
+      cursor.style.filter = 'blur(10px)';
+    }
+  }, 120);
+
+  // Hide the default cursor
+  document.body.style.cursor = 'none';
+})();
