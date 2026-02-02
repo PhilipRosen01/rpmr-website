@@ -1284,3 +1284,45 @@ html {
     transition: none !important;
   }
 }
+
+/* =========================
+   Header & Navigation Hover Animations
+   ========================= */
+.rpmr-navlinks a, .rpmr-burger {
+  position: relative;
+  overflow: hidden;
+  transition:
+    background 0.22s cubic-bezier(.4,2,.6,1),
+    color 0.18s,
+    border-color 0.18s,
+    box-shadow 0.22s cubic-bezier(.4,2,.6,1),
+    transform 0.18s cubic-bezier(.4,2,.6,1);
+}
+.rpmr-navlinks a::before, .rpmr-burger::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, var(--b, #22d3ee) 0%, var(--a, #7c3aed) 100%);
+  opacity: 0.14;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0.7);
+  transition: width 0.32s cubic-bezier(.4,2,.6,1), height 0.32s cubic-bezier(.4,2,.6,1), opacity 0.18s, transform 0.32s cubic-bezier(.4,2,.6,1);
+  pointer-events: none;
+  z-index: 1;
+}
+.rpmr-navlinks a:hover::before, .rpmr-burger:hover::before {
+  width: 120%;
+  height: 120%;
+  opacity: 0.22;
+  transform: translate(-50%, -50%) scale(1.02);
+}
+.rpmr-navlinks a:hover, .rpmr-burger:hover {
+  box-shadow: 0 3px 16px 0 var(--a, #7c3aed22), 0 0 0 1px var(--b, #22d3ee22);
+  transform: translateY(-1px) scale(1.01) rotate(-0.5deg);
+  background: linear-gradient(90deg, var(--a, #7c3aed) 0%, var(--b, #22d3ee) 100%) !important;
+  color: #fff;
+  border-color: var(--b, #22d3ee);
+}
