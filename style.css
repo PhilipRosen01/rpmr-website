@@ -1128,3 +1128,14 @@ html {
   margin-bottom: 0 !important;
   padding-bottom: 0 !important;
 }
+@media (min-width: 1024px) {
+  .rpmr-burger {
+    display: none !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .rpmr-burger {
+    display: none !important;
+  }
+}
