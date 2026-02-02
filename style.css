@@ -14,6 +14,11 @@ body {
   overflow-x: hidden;
 }
 
+/* Smooth in-page anchor scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
 .rpmr-site {
   --bg0: #070a12;
   --bg1: #090f1e;
@@ -917,6 +922,12 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
   }
+  html {
+    scroll-behavior: auto;
+  }
+  .rpmr-burger-icon {
+    transition: none !important;
+  }
   .rpmr-bg-glow {
     display: none;
   }
@@ -975,11 +986,21 @@ body {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 4px;
     padding: 0;
-    flex-direction: column;
+    -webkit-tap-highlight-color: transparent;
   }
-  .rpmr-burger span {
+
+  .rpmr-burger-icon {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 4px;
+    transition: transform 0.22s ease;
+  }
+  .rpmr-burger[aria-expanded="true"] .rpmr-burger-icon {
+    transform: rotate(90deg);
+  }
+
+  .rpmr-burger-icon span {
     width: 18px;
     height: 2px;
     border-radius: 999px;
@@ -1076,10 +1097,6 @@ body {
   }
 }
 /* Fix: prevent nested scroll containers inside the RPMR page */
-.rpmr-site,
-.rpmr-site * {
-  scroll-behavior: auto;
-}
 
 .rpmr-site {
   overflow: visible !important;
