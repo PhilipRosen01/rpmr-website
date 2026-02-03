@@ -1,0 +1,9 @@
+# Security: block direct web access to sensitive config
+<Files "config.php">
+  Require all denied
+</Files>
+
+# Also block common backup/temporary variants if they ever get created
+<FilesMatch "^(config\.php(~|\.bak|\.old|\.orig|\.save|\.swp)|config\.php\.)">
+  Require all denied
+</FilesMatch>
