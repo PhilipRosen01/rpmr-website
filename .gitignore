@@ -1,2 +1,5 @@
+# Ignore server-only mail config (contains SMTP credentials)
+config.mail.php
+
 # Ignore PHP mail handler
-send.php
+# send.php
