@@ -30,14 +30,14 @@ try {
   $mail->isSMTP();
   $mail->Host       = "smtp.hostinger.com";   // common for Hostinger
   $mail->SMTPAuth   = true;
-  $mail->Username   = "your-email@yourdomain.com";
-  $mail->Password   = "YOUR_EMAIL_PASSWORD";
+  $mail->Username   = "rpmr@pbrosen.com";
+  $mail->Password   = "fermic-1jitRa-fahhar";
   $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
   $mail->Port       = 587;
 
   // Email headers/content
-  $mail->setFrom("your-email@yourdomain.com", "Website Contact Form");
-  $mail->addAddress("your-email@yourdomain.com"); // where you receive it
+  $mail->setFrom("rpmr@pbrosen.com", "Website Contact Form");
+  $mail->addAddress("rpmr@pbrosen.com"); // where you receive it
   $mail->addReplyTo($email, $name);
 
   $mail->Subject = "New Contact Form Submission";
