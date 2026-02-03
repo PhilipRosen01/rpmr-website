@@ -296,7 +296,7 @@
               </p>
             </div>
             <div class="rpmr-cta-actions">
-              <form id="rpmr-contact-form" class="rpmr-form" autocomplete="off">
+              <form id="rpmr-contact-form" class="rpmr-form" method="POST" action="/send.php">
                 <div class="rpmr-form-group">
                   <label for="rpmr-name">Name<span style="color:#f472b6">*</span></label>
                   <input type="text" id="rpmr-name" name="name" required autocomplete="name" />
@@ -322,10 +322,9 @@
                 </div>
                 <div class="rpmr-form-group">
                   <label for="rpmr-message">Message</label>
-                  <textarea id="rpmr-message" name="message" rows="3" placeholder="Tell us more..."></textarea>
+                  <textarea id="rpmr-message" name="message" rows="3" placeholder="Tell us more..." required></textarea>
                 </div>
-                <button type="submit" class="rpmr-btn rpmr-primary" style="width:100%">Submit</button>
-                <div id="rpmr-form-status" class="rpmr-form-status" style="margin-top:10px;"></div>
+                <button type="submit" class="rpmr-btn rpmr-primary" style="width:100%">Send</button>
               </form>
             </div>
           </div>

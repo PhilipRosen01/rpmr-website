@@ -107,35 +107,6 @@
   });
 })();
 
-// Contact form handler
-(() => {
-  const form = document.getElementById('rpmr-contact-form');
-  const status = document.getElementById('rpmr-form-status');
-  if (!form) return;
-
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    status.textContent = '';
-    const data = Object.fromEntries(new FormData(form));
-    // Basic client-side validation (HTML5 required already)
-    if (!data.name || !data.email || !data.interest) {
-      status.textContent = 'Please fill in all required fields.';
-      status.style.color = '#f472b6';
-      return;
-    }
-    // Simulate async submission (replace with real endpoint as needed)
-    form.querySelector('button[type="submit"]').disabled = true;
-    status.textContent = 'Submitting...';
-    status.style.color = 'var(--muted2)';
-    setTimeout(() => {
-      status.textContent = 'Thank you! Your message has been received.';
-      status.style.color = 'var(--c)';
-      form.reset();
-      form.querySelector('button[type="submit"]').disabled = false;
-    }, 1200);
-  });
-})();
-
 // Creative animated cursor effect
 (() => {
   // Create the custom cursor element
