@@ -7,7 +7,6 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 
 // Helper: redirect to thank-you page relative to current directory
 function redirect_thank_you(): void {
-  // send.php and thank-you.html live in the same folder in this project
   $base = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\');
   $target = ($base === '' ? '' : $base) . '/thank-you.html';
   header('Location: ' . $target, true, 303);
@@ -15,10 +14,40 @@ function redirect_thank_you(): void {
 }
 
 // Load server-only mail configuration (DO NOT COMMIT THIS FILE)
-$configPath = __DIR__ . '/config.mail.php';
-if (!file_exists($configPath)) {
+$searchPaths = [
+  __DIR__ . '/config.php',
+];
+if (!empty($_SERVER['DOCUMENT_ROOT'])) {
+  $searchPaths[] = rtrim($_SERVER['DOCUMENT_ROOT'], '/\\') . '/config.php';
+}
+
+$configPath = null;
+foreach ($searchPaths as $p) {
+  if (is_file($p)) {
+    $configPath = $p;
+    break;
+  }
+}
+
+if ($configPath === null) {
   http_response_code(500);
-  exit('Mail config missing on server.');
+  header('Content-Type: text/plain; charset=UTF-8');
+  echo "Mail config missing on server.\n";
+  echo "Looked for:\n- " . implode("\n- ", $searchPaths) . "\n\n";
+  echo "Debug:\n";
+  echo "__DIR__ = " . __DIR__ . "\n";
+  echo "SCRIPT_FILENAME = " . ($_SERVER['SCRIPT_FILENAME'] ?? '') . "\n";
+  echo "DOCUMENT_ROOT = " . ($_SERVER['DOCUMENT_ROOT'] ?? '') . "\n";
+  echo "\nIf the file exists, common causes are: wrong filename/case (config.php), not readable permissions, or it was uploaded somewhere else.\n";
+  exit;
+}
+
+if (!is_readable($configPath)) {
+  http_response_code(500);
+  header('Content-Type: text/plain; charset=UTF-8');
+  echo "Mail config found but NOT readable: {$configPath}\n";
+  echo "Fix permissions so PHP can read it (typically 644).\n";
+  exit;
 }
 
 /** @var array{smtp_host:string,smtp_username:string,smtp_password:string,smtp_port:int,smtp_secure:string,mail_from:string,mail_from_name:string,mail_to:string} $MAIL_CONFIG */
@@ -62,6 +91,11 @@ try {
   $mail->Username = $MAIL_CONFIG['smtp_username'];
   $mail->Password = $MAIL_CONFIG['smtp_password'];
 
+  // Some hosts require explicit auth type
+  if (!empty($MAIL_CONFIG['smtp_auth_type'])) {
+    $mail->AuthType = $MAIL_CONFIG['smtp_auth_type'];
+  }
+
   // smtp_secure: 'tls' or 'ssl'
   if ($MAIL_CONFIG['smtp_secure'] === 'ssl') {
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
@@ -96,6 +130,13 @@ try {
   redirect_thank_you();
 } catch (Exception $e) {
   http_response_code(500);
-  // Keep error generic on production; check Hostinger error logs for details.
-  echo "Mailer Error";
+  header('Content-Type: text/plain; charset=UTF-8');
+
+  // Temporary diagnostics: show the actual reason sending failed.
+  // After it's fixed, revert to a generic message.
+  echo "Mailer Error: " . ($mail->ErrorInfo ?: $e->getMessage());
+
+  // Also log details to the server error log (Hostinger -> Errors).
+  error_log('PHPMailer ErrorInfo: ' . $mail->ErrorInfo);
+  error_log('PHPMailer Exception: ' . $e->getMessage());
 }
