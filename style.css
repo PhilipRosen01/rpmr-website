@@ -1392,3 +1392,106 @@ html {
     padding: 56px 0;
   }
 }
+
+/* =========================
+   Unique Section Header Layouts
+   ========================= */
+
+/* SERVICES: centered header with subtle underline accent */
+.rpmr-section-head-services {
+  justify-content: center;
+  text-align: center;
+}
+.rpmr-section-head-services > div {
+  max-width: 78ch;
+}
+.rpmr-section-head-services .rpmr-kicker {
+  display: inline-flex;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  margin-bottom: 12px;
+}
+.rpmr-section-head-services .rpmr-title {
+  position: relative;
+  display: inline-block;
+}
+.rpmr-section-head-services .rpmr-title::after {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 72px;
+  margin: 14px auto 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--a), var(--b));
+  opacity: 0.9;
+}
+
+/* PROJECTS: reverted to default `.rpmr-section-head` layout (no custom split) */
+/* (intentionally no overrides for `.rpmr-section-head-projects`) */
+
+/* PROJECTS: restore accent bar next to kicker/title for color + definition */
+.rpmr-section-head-projects > div {
+  position: relative;
+  padding-left: 18px;
+}
+.rpmr-section-head-projects > div::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  bottom: 6px;
+  width: 4px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--b), var(--a));
+  opacity: 0.95;
+  box-shadow:
+    0 18px 40px rgba(124, 58, 237, 0.18);
+}
+
+/* PROCESS: centered "panel" header (distinct from Projects) */
+.rpmr-section-head-process {
+  justify-content: center;
+  text-align: center;
+}
+.rpmr-section-head-process > div {
+  width: 100%;
+  max-width: 740px;
+  padding: 18px 18px 16px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: radial-gradient(
+      520px 240px at 25% 35%,
+      rgba(34, 211, 238, 0.12),
+      transparent 60%
+    ),
+    radial-gradient(
+      560px 260px at 80% 60%,
+      rgba(124, 58, 237, 0.12),
+      transparent 60%
+    ),
+    rgba(255, 255, 255, 0.03);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+}
+.rpmr-section-head-process .rpmr-kicker {
+  display: inline-flex;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  margin-bottom: 10px;
+}
+
+@media (max-width: 760px) {
+  .rpmr-section-head-process {
+    text-align: left;
+    justify-content: flex-start;
+  }
+  .rpmr-section-head-process > div {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+}
