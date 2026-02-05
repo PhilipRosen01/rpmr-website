@@ -4,19 +4,28 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>RPMR Creations</title>
+
+    <!-- Font (readable + modern) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
     <link rel="stylesheet" href="style.css" />
 
     <!-- Social preview (Open Graph / Twitter Card) -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="RPMR Creations" />
-    <meta property="og:description" content="Games • Products • Solutions" />
+    <meta property="og:description" content="Products • Tools • Solutions" />
     <meta property="og:image" content="assets/images/rmpr-preview-img.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="RPMR Creations" />
-    <meta name="twitter:description" content="Games • Products • Solutions" />
+    <meta name="twitter:description" content="Products • Tools • Solutions" />
     <meta name="twitter:image" content="assets/images/rmpr-preview-img.png" />
   </head>
 
@@ -32,7 +41,7 @@
             <span class="rpmr-logo" aria-hidden="true"></span>
             <span class="rpmr-brandtext">
               <span class="rpmr-brandname">RPMR CREATIONS</span>
-              <span class="rpmr-brandtag">Games • Products • Solutions</span>
+              <span class="rpmr-brandtag">Products • Tools • Solutions</span>
             </span>
           </a>
 
@@ -68,7 +77,7 @@
       </header>
 
       <main class="rpmr-hero">
-        <div class="rpmr-container rpmr-hero-grid">
+        <div class="rpmr-container rpmr-hero-simple">
           <div class="rpmr-reveal">
             <div class="rpmr-badge">
               <span class="rpmr-dot" aria-hidden="true"></span>
@@ -76,15 +85,15 @@
               time.
             </div>
 
-            <h2 class="rpmr-hero-title">
-              We build <span class="rpmr-grad">games</span>, digital products,
+            <h1 class="rpmr-hero-title">
+              We build digital products
               and solutions that people actually want to use.
-            </h2>
+            </h1>
 
             <p class="rpmr-hero-sub">
-              RPMR Creations is a tech studio crafting everything from
-              community-driven games to custom digital tools — with a
-              focus on performance, polish, and real-world value.
+              RPMR Creations is a tech studio crafting everything from customer-facing
+              products to internal tools and automations — with a focus on performance,
+              polish, and real-world value.
             </p>
 
             <div class="rpmr-hero-actions">
@@ -93,38 +102,44 @@
               <a class="rpmr-btn" href="#services">What We Do</a>
             </div>
           </div>
-
-          <aside class="rpmr-hero-card rpmr-reveal-2" aria-label="Highlights">
-            <h3 class="rpmr-card-title">What we deliver</h3>
-            <p class="rpmr-card-sub">
-              Modern UX, clean code, scalable foundations — shipped with
-              momentum.
-            </p>
-
-            <div class="rpmr-metrics rpmr-stagger">
-              <div class="rpmr-metric">
-                <b>Game Builds</b>
-                <small>Engaging loops, progression systems, live updates.</small>
-              </div>
-              <div class="rpmr-metric">
-                <b>Custom Tools</b>
-                <small>Dashboards, automations, portals, internal apps.</small>
-              </div>
-              <div class="rpmr-metric">
-                <b>Mobile Apps</b>
-                <small>iOS/Android, fast iteration, smooth UX.</small>
-              </div>
-            </div>
-
-            <div class="rpmr-chiprow">
-              <span class="rpmr-chip">Strategy → Build → Launch</span>
-              <span class="rpmr-chip">Performance-first</span>
-              <span class="rpmr-chip">Design-led</span>
-              <span class="rpmr-chip">Reliable delivery</span>
-            </div>
-          </aside>
         </div>
       </main>
+
+      <section class="rpmr-section" id="deliver">
+        <div class="rpmr-container">
+          <div class="rpmr-section-head rpmr-reveal">
+            <div>
+              <div class="rpmr-kicker">Delivery</div>
+              <h3 class="rpmr-title">What we deliver</h3>
+              <p class="rpmr-subtitle">
+                Modern UX, clean code, scalable foundations — shipped with momentum.
+              </p>
+            </div>
+          </div>
+
+          <div class="rpmr-metrics-section rpmr-stagger">
+            <div class="rpmr-metric">
+              <b>Product Builds</b>
+              <small>Fast iteration, clean UX, scalable foundations.</small>
+            </div>
+            <div class="rpmr-metric">
+              <b>Custom Tools</b>
+              <small>Dashboards, automations, portals, internal apps.</small>
+            </div>
+            <div class="rpmr-metric">
+              <b>Mobile Apps</b>
+              <small>iOS/Android, fast iteration, smooth UX.</small>
+            </div>
+          </div>
+
+          <div class="rpmr-chiprow rpmr-reveal-2">
+            <span class="rpmr-chip">Strategy → Build → Launch</span>
+            <span class="rpmr-chip">Performance-first</span>
+            <span class="rpmr-chip">Design-led</span>
+            <span class="rpmr-chip">Reliable delivery</span>
+          </div>
+        </div>
+      </section>
 
       <section class="rpmr-section" id="services">
         <div class="rpmr-container">
@@ -133,8 +148,8 @@
               <div class="rpmr-kicker">Services</div>
               <h3 class="rpmr-title">From idea to launch — and beyond</h3>
               <p class="rpmr-subtitle">
-                We’re flexible by design. Whether you’re building a game
-                prototype or a community tool, we build for clarity, speed, and long-term maintainability.
+                We’re flexible by design. Whether you’re building a customer-facing product
+                or an internal tool, we build for clarity, speed, and long-term maintainability.
               </p>
             </div>
           </div>
@@ -142,12 +157,12 @@
           <div class="rpmr-grid3 rpmr-stagger">
             <article class="rpmr-card">
               <div class="rpmr-icon" aria-hidden="true"></div>
-              <h4>Game Development</h4>
+              <h4>Product Development</h4>
               <p>
-                Prototypes to full releases: mechanics, UI, progression,
-                analytics, and live updates.
+                MVPs to production launches: UX, integrations, data, analytics,
+                and iterative improvements.
               </p>
-              <a class="rpmr-inline" href="#contact">Talk game build →</a>
+              <a class="rpmr-inline" href="#contact">Talk product build →</a>
             </article>
 
             <article class="rpmr-card">
@@ -181,7 +196,7 @@
               <h3 class="rpmr-title">A few things we love building</h3>
               <p class="rpmr-subtitle">
                 We can plug into an existing product or build from scratch. Here
-                are example project types that map well to games, communities,
+                are example project types that map well to communities, businesses,
                 and real-world tooling.
               </p>
             </div>
@@ -201,12 +216,12 @@
               </div>
 
               <div class="rpmr-project">
-                <div class="rpmr-pill">Game</div>
+                <div class="rpmr-pill">Product</div>
                 <div>
-                  <h5>Competitive & cooperative game loops</h5>
+                  <h5>Retention loops for real products</h5>
                   <p>
-                    Matchmaking, leaderboards, progression, cosmetic economies,
-                    and content drops.
+                    Onboarding, notifications, analytics, subscriptions, and iteration cycles
+                    that improve activation and retention.
                   </p>
                 </div>
               </div>
@@ -224,8 +239,8 @@
             </div>
 
             <aside class="rpmr-side-panel rpmr-reveal-2">
-              <div class="rpmr-kicker" style="margin: 0">Toolbox</div>
-              <h4 class="rpmr-side-title">Modern stack, pragmatic choices</h4>
+              <div class="rpmr-kicker" style="margin: 0">Modern stack, pragmatic choices</div>
+              <h4 class="rpmr-side-title">Toolbox</h4>
               <p class="rpmr-side-sub">
                 We choose tech based on your constraints: timeline, budget,
                 maintainability, and scale.
@@ -328,7 +343,7 @@
                   <label for="rpmr-interest">What are you interested in?<span style="color:#f472b6">*</span></label>
                   <select id="rpmr-interest" name="interest" required>
                     <option value="" disabled selected>Select an option</option>
-                    <option value="game">Create a Game</option>
+                    <option value="product">Build a Product</option>
                     <option value="app">Create an App</option>
                     <option value="website">Create a Website</option>
                     <option value="tool">Custom Tool</option>
