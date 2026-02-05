@@ -15,25 +15,44 @@
 }
 
 .rpmr-foot {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  text-align: center;
+  gap: 14px;
+}
+
+.rpmr-footer-logo {
+  width: min(180px, 42vw);
+  height: auto;
+  display: block;
+  justify-self: center;
+  opacity: 0.9;
+  filter: drop-shadow(0 12px 26px rgba(0, 0, 0, 0.5));
 }
 
 .rpmr-footlinks {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
+  justify-content: center;
+  justify-self: center;
 }
 
 .rpmr-footlinks a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
   color: rgba(255, 255, 255, 0.72);
-  padding: 8px 10px;
+  padding: 8px 12px;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+
+  line-height: 1;
+  white-space: nowrap;
+
   transition:
     transform 0.18s ease,
     background 0.18s ease,
@@ -42,6 +61,22 @@
 
 .rpmr-footlinks a:hover {
   transform: translateY(-2px);
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.rpmr-footer-copy {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+@media (max-width: 720px) {
+  .rpmr-foot {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .rpmr-footlinks {
+    justify-self: center;
+  }
 }
