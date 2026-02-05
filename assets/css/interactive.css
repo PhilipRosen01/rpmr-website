@@ -118,6 +118,63 @@
   background: var(--card2);
 }
 
+/* Services: don't let the card hover effect visually apply to the inline CTA unless it's the hovered element */
+.rpmr-card:hover .rpmr-inline:not(:hover) {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  box-shadow: none !important;
+  transform: none !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.rpmr-card:hover .rpmr-inline:not(:hover)::before {
+  width: 0 !important;
+  height: 0 !important;
+  opacity: 0 !important;
+}
+
+/* Services: if hovering the inline CTA, do NOT apply the card hover visuals */
+.rpmr-card:has(.rpmr-inline:hover):hover {
+  box-shadow: var(--shadow2) !important;
+  transform: none !important;
+}
+
+.rpmr-card:has(.rpmr-inline:hover):hover::before {
+  width: 0 !important;
+  height: 0 !important;
+  opacity: 0 !important;
+}
+
+/* Services: hovering the inner inline CTA should not trigger card hover */
+#services .rpmr-card:hover:has(.rpmr-inline:hover) {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  box-shadow: var(--shadow2) !important;
+  transform: none !important;
+}
+
+#services .rpmr-card:hover:has(.rpmr-inline:hover)::before {
+  width: 0 !important;
+  height: 0 !important;
+  opacity: 0 !important;
+}
+
+/* Services: when the card is hovered, keep the inline CTA looking normal unless the CTA itself is hovered */
+#services .rpmr-card:hover .rpmr-inline:not(:hover) {
+  background: #28313f !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  box-shadow: none !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+#services .rpmr-card:hover .rpmr-inline:not(:hover)::before {
+  width: 0 !important;
+  height: 0 !important;
+  opacity: 0 !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .rpmr-btn,
   .rpmr-inline,
