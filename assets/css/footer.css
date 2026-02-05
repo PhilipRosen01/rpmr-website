@@ -5,10 +5,13 @@
    ========================= */
 
 .rpmr-footer {
-  padding: 34px 0 44px;
+  padding: 34px 0 34px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   color: rgba(255, 255, 255, 0.65);
   font-size: 13px;
+
+  /* sticky-footer behavior (works with .rpmr-site flex column) */
+  margin-top: auto;
 }
 
 .rpmr-foot {

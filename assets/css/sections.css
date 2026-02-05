@@ -10,6 +10,11 @@
   z-index: 1;
 }
 
+/* Ensure the final section has enough breathing room above the footer */
+.rpmr-section#contact {
+  padding-bottom: 100px;
+}
+
 .rpmr-section-head {
   display: flex;
   align-items: flex-end;

@@ -33,9 +33,9 @@
     grid-row: 1 / span 2;
   }
 
-  /* Stagger: drop the form column slightly below the intro panel */
+  /* remove stagger: keep the form aligned with the intro panel */
   .rpmr-contact-layout > .rpmr-cta-actions {
-    margin-top: 18px;
+    margin-top: 0;
   }
 }
 
@@ -46,7 +46,7 @@
   }
 
   .rpmr-contact-layout > .rpmr-cta-actions {
-    margin-top: 92px;
+    margin-top: 0;
   }
 }
 
@@ -135,33 +135,65 @@
 }
 
 .rpmr-cta-actions {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: stretch;
+  /* switch from flex to grid so logo and form are locked into vertical rows */
+  display: grid;
+  grid-template-rows: auto 1fr;
+  justify-items: center;
+  align-items: start;
+  gap: 12px;
+
   width: 100%;
   height: 100%;
   padding: 0;
 
   /* anchor for the accent line above the form */
   position: relative;
-  padding-top: 18px;
+  padding-top: 6px;
 
   /* room for the bottom accent bar below the form */
-  padding-bottom: 18px;
+  padding-bottom: 34px;
+
+  /* allow the bottom bar to sit below without being clipped */
+  overflow: visible;
+}
+
+/* Ensure the form respects the same width as the accents */
+.rpmr-cta-actions > .rpmr-form {
+  width: min(100%, 620px);
+  justify-self: center;
+}
+
+.rpmr-contact-logo {
+  /* match form width and center */
+  width: min(100%, 320px);
+  max-width: 620px;
+  margin-left: auto;
+  margin-right: auto;
+
+  display: block;
+  text-align: center;
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.45));
 }
 
 /* Accent line ABOVE the contact form */
 .rpmr-cta-actions::before {
+  content: none;
+}
+
+/* Accent line BELOW the contact form (anchored to the form itself) */
+.rpmr-form {
+  position: relative;
+  overflow: visible;
+}
+
+.rpmr-form::after {
   content: "";
   position: absolute;
   left: 50%;
-  top: 0;
+  top: calc(100% + 12px);
   transform: translateX(-50%);
 
-  /* match the form width (max 620px, otherwise fill available width) */
-  width: min(100%, 620px);
-
+  width: 100%;
   height: 4px;
   border-radius: 999px;
   background: linear-gradient(90deg, var(--b), var(--a));
@@ -170,27 +202,15 @@
   pointer-events: none;
 }
 
-/* Accent line BELOW the contact form (does not interfere with form animations) */
+/* Disable the older column-based bottom bar */
 .rpmr-cta-actions::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  transform: translateX(-50%);
-
-  width: min(100%, 620px);
-  height: 4px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, var(--b), var(--a));
-  opacity: 0.95;
-  filter: drop-shadow(0 18px 40px rgba(124, 58, 237, 0.18));
-  pointer-events: none;
+  content: none;
 }
 
 .rpmr-form {
   background: var(--card2);
   border-radius: 18px;
-  padding: 15px;
+  padding: 12px 15px 15px;
   box-shadow: var(--shadow2);
   max-width: 620px;
   margin: 0 auto;
@@ -249,7 +269,6 @@
   width: 100%;
   max-width: none;
   min-width: 0;
-  height: 100%;
   box-sizing: border-box;
   padding: 24px 20px;
   margin: 0;
@@ -312,3 +331,4 @@
     padding-bottom: 130px;
   }
 }
+
