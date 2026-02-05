@@ -280,9 +280,14 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.7);
-  padding: 8px 10px;
+
+  /* restore pill shape */
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 8px 14px;
+  min-height: 32px;
+
+  /* visible by default */
+  border: 1px solid rgba(255, 255, 255, 0.14);
   background: rgba(255, 255, 255, 0.04);
   white-space: nowrap;
 }

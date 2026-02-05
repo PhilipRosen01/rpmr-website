@@ -156,6 +156,38 @@
   font-size: 13.6px;
 }
 
+.rpmr-project-row {
+  display: grid;
+  grid-template-columns: var(--rpmr-pill-w, 120px) 1fr;
+  align-items: center;
+  gap: 10px;
+}
+
+.rpmr-project-row .rpmr-pill {
+  width: var(--rpmr-pill-w, 120px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.rpmr-project-row .rpmr-project {
+  width: 100%;
+  margin-left: 0;
+}
+
+@media (max-width: 520px) {
+  .rpmr-project-row {
+    grid-template-columns: 1fr;
+  }
+
+  .rpmr-project-row .rpmr-pill {
+    width: fit-content;
+    justify-content: flex-start;
+    text-align: left;
+  }
+}
+
 /* =========================
    Process Section
    ========================= */
