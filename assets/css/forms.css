@@ -1,6 +1,40 @@
 /* Forms + contact section */
 
 /* =========================
+   Contact Layout (Intro panel + form side-by-side)
+   ========================= */
+
+.rpmr-contact-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+@media (min-width: 768px) {
+  .rpmr-contact-layout {
+    grid-template-columns: minmax(260px, 0.75fr) minmax(520px, 1.25fr);
+    gap: 28px;
+  }
+
+  /* Stagger: drop the form column slightly below the intro panel */
+  .rpmr-contact-layout > .rpmr-cta-actions {
+    margin-top: 18px;
+  }
+}
+
+@media (min-width: 1100px) {
+  .rpmr-contact-layout {
+    grid-template-columns: minmax(320px, 0.8fr) minmax(560px, 1.2fr);
+    gap: 34px;
+  }
+
+  .rpmr-contact-layout > .rpmr-cta-actions {
+    margin-top: 92px;
+  }
+}
+
+/* =========================
    CTA Block (Contact Section)
    ========================= */
 
@@ -163,37 +197,50 @@
   flex-wrap: wrap;
 }
 
+/* Tighten the left column and let the form take more space */
+.rpmr-contact-intro {
+  max-width: 46ch;
+}
+
+.rpmr-contact-intro h3 {
+  font-size: clamp(22px, 2.2vw, 34px);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.rpmr-contact-intro p {
+  font-size: 16px;
+  line-height: 1.75;
+  margin-top: 12px;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+@media (min-width: 768px) {
+  .rpmr-contact-intro p {
+    font-size: 16.5px;
+  }
+}
+
+/* The CTA block now only contains the intro, so it doesn't need a 2-column grid */
 @media (min-width: 768px) {
   .rpmr-cta-block {
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 48px;
+    display: block;
   }
+}
 
-  .rpmr-cta-block > div:first-child {
-    flex: 1 1 0;
-    max-width: 420px;
-  }
+/* Ensure the contact section always has breathing room above the footer */
+#contact {
+  padding-bottom: 110px;
+}
 
-  .rpmr-cta-actions {
-    flex: 1 1 0;
-    max-width: 520px;
-    min-width: 340px;
-  }
-
-  .rpmr-form {
-    max-width: 100%;
-    min-width: 320px;
+@media (max-width: 760px) {
+  #contact {
+    padding-bottom: 80px;
   }
 }
 
 @media (min-width: 1100px) {
-  .rpmr-cta-block {
-    gap: 80px;
-  }
-
-  .rpmr-cta-actions {
-    max-width: 600px;
+  #contact {
+    padding-bottom: 130px;
   }
 }
