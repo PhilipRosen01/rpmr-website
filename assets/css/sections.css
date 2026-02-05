@@ -116,17 +116,20 @@
   grid-template-columns: 1.2fr 0.8fr;
   gap: 14px;
   margin-top: 16px;
+
+  /* vertical alignment between the list column and the side panel */
+  align-items: center;
 }
 
 .rpmr-project-list {
   display: grid;
-  gap: 12px;
+  gap: 35px;
 }
 
 .rpmr-project {
   border-radius: var(--r);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--rpmr-surface, #090f1e);
   padding: 16px;
   display: flex;
   gap: 14px;
@@ -139,7 +142,7 @@
 
 .rpmr-project:hover {
   transform: translateY(-3px);
-  background: rgba(255, 255, 255, 0.06);
+  background: var(--rpmr-surface, #090f1e);
   border-color: rgba(255, 255, 255, 0.16);
 }
 
@@ -157,34 +160,60 @@
 }
 
 .rpmr-project-row {
-  display: grid;
-  grid-template-columns: var(--rpmr-pill-w, 120px) 1fr;
-  align-items: center;
-  gap: 10px;
-}
-
-.rpmr-project-row .rpmr-pill {
-  width: var(--rpmr-pill-w, 120px);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  position: relative;
+  display: block;
 }
 
 .rpmr-project-row .rpmr-project {
+  position: relative;
   width: 100%;
-  margin-left: 0;
+  padding-left: calc(var(--rpmr-pill-w, 120px) * 0.35);
+}
+
+/* Bridge: hide the card's top border behind the pill so it feels merged */
+.rpmr-project-row .rpmr-project::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: -10px;
+
+  width: calc(var(--rpmr-pill-w, 120px) + 30px);
+  height: 44px;
+
+  /* opaque surface to fully block the border showing through */
+  background: var(--rpmr-surface, #090f1e);
+
+  border-radius: 999px;
+  pointer-events: none;
+
+  /* sit above the card border but below the pill */
+  z-index: 3;
+}
+
+.rpmr-project-row .rpmr-pill {
+  position: absolute;
+  left: 14px;
+  top: -18px;
+  width: var(--rpmr-pill-w, 120px);
+
+  z-index: 4;
+
+  /* match project card styling so it reads as attached */
+  background: var(--rpmr-surface, #090f1e) !important;
+  border-color: rgba(255, 255, 255, 0.1);
+
+  box-shadow:
+    0 14px 34px rgba(0, 0, 0, 0.38),
+    0 0 0 1px rgba(255, 255, 255, 0.08) inset;
 }
 
 @media (max-width: 520px) {
-  .rpmr-project-row {
-    grid-template-columns: 1fr;
+  .rpmr-project-row .rpmr-project::before {
+    display: none;
   }
 
   .rpmr-project-row .rpmr-pill {
-    width: fit-content;
-    justify-content: flex-start;
-    text-align: left;
+    box-shadow: none;
   }
 }
 

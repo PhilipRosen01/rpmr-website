@@ -286,6 +286,12 @@
   padding: 8px 14px;
   min-height: 32px;
 
+  /* center text */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
   /* visible by default */
   border: 1px solid rgba(255, 255, 255, 0.14);
   background: rgba(255, 255, 255, 0.04);

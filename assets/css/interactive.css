@@ -88,6 +88,28 @@
   border-color: var(--b, #22d3ee);
 }
 
+/* Projects: hovering either the pill or the card should animate both */
+.rpmr-project-row:hover .rpmr-project,
+.rpmr-project-row:focus-within .rpmr-project,
+.rpmr-project-row:hover .rpmr-pill,
+.rpmr-project-row:focus-within .rpmr-pill {
+  box-shadow: 0 6px 32px 0 var(--a, #7c3aed33), 0 0 0 2px var(--b, #22d3ee33);
+  transform: translateY(-2px) scale(1.03) rotate(-1deg);
+  background: linear-gradient(90deg, var(--a, #7c3aed) 0%, var(--b, #22d3ee) 100%) !important;
+  color: #fff;
+  border-color: var(--b, #22d3ee);
+}
+
+.rpmr-project-row:hover .rpmr-project::before,
+.rpmr-project-row:focus-within .rpmr-project::before,
+.rpmr-project-row:hover .rpmr-pill::before,
+.rpmr-project-row:focus-within .rpmr-pill::before {
+  width: 220%;
+  height: 220%;
+  opacity: 0.32;
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
 .rpmr-form input:focus,
 .rpmr-form select:focus,
 .rpmr-form textarea:focus {
