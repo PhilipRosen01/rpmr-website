@@ -1,0 +1,199 @@
+/* Forms + contact section */
+
+/* =========================
+   CTA Block (Contact Section)
+   ========================= */
+
+.rpmr-cta-block {
+  border-radius: calc(var(--r) + 6px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background:
+    radial-gradient(
+      600px 260px at 15% 40%,
+      rgba(124, 58, 237, 0.22),
+      transparent 60%
+    ),
+    radial-gradient(
+      520px 280px at 85% 45%,
+      rgba(34, 211, 238, 0.18),
+      transparent 60%
+    ),
+    rgba(255, 255, 255, 0.04);
+  padding: 22px;
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  overflow: hidden;
+  position: relative;
+}
+
+.rpmr-cta-block::after {
+  content: "";
+  position: absolute;
+  inset: -30%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.14),
+    transparent
+  );
+  transform: rotate(18deg) translateX(-60%);
+  opacity: 0.4;
+  animation: rpmr-sweep 6.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes rpmr-sweep {
+  0%,
+  70% {
+    transform: rotate(18deg) translateX(-70%);
+    opacity: 0;
+  }
+  82% {
+    opacity: 0.55;
+  }
+  100% {
+    transform: rotate(18deg) translateX(70%);
+    opacity: 0;
+  }
+}
+
+.rpmr-cta-block h3 {
+  margin: 0;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+}
+
+.rpmr-cta-block p {
+  margin: 6px 0 0;
+  color: var(--muted);
+  line-height: 1.6;
+  font-size: 14px;
+  max-width: 64ch;
+}
+
+.rpmr-cta-actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
+.rpmr-form {
+  background: var(--card2);
+  border-radius: 18px;
+  padding: 15px;
+  box-shadow: var(--shadow2);
+  max-width: 620px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.rpmr-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.rpmr-form label {
+  font-size: 1rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.rpmr-form input,
+.rpmr-form select,
+.rpmr-form textarea {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--text);
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border 0.18s;
+}
+
+.rpmr-form input:focus,
+.rpmr-form select:focus,
+.rpmr-form textarea:focus {
+  outline: none;
+  border-color: var(--a);
+}
+
+.rpmr-form textarea {
+  resize: vertical;
+  min-height: 60px;
+  max-height: 180px;
+}
+
+.rpmr-form-status {
+  font-size: 0.98rem;
+  color: var(--c);
+  min-height: 1.2em;
+}
+
+/* Layout overrides from earlier iterations */
+.rpmr-form {
+  flex: 1 1 auto;
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 24px 20px;
+  margin: 0;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.rpmr-cta-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 768px) {
+  .rpmr-cta-block {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 48px;
+  }
+
+  .rpmr-cta-block > div:first-child {
+    flex: 1 1 0;
+    max-width: 420px;
+  }
+
+  .rpmr-cta-actions {
+    flex: 1 1 0;
+    max-width: 520px;
+    min-width: 340px;
+  }
+
+  .rpmr-form {
+    max-width: 100%;
+    min-width: 320px;
+  }
+}
+
+@media (min-width: 1100px) {
+  .rpmr-cta-block {
+    gap: 80px;
+  }
+
+  .rpmr-cta-actions {
+    max-width: 600px;
+  }
+}

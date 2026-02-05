@@ -1,0 +1,129 @@
+/* Header / Navigation */
+
+/* =========================
+   Header & Navigation
+   ========================= */
+
+.rpmr-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(12px);
+  background: linear-gradient(
+    180deg,
+    rgba(7, 10, 18, 0.78),
+    rgba(7, 10, 18, 0.35)
+  );
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.rpmr-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  gap: 16px;
+  position: relative;
+  z-index: 2;
+}
+
+.rpmr-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 220px;
+}
+
+/* NOTE: currently styled as a placeholder gradient logo */
+.rpmr-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  background:
+    radial-gradient(
+      18px 18px at 30% 30%,
+      rgba(255, 255, 255, 0.35),
+      transparent 60%
+    ),
+    linear-gradient(135deg, rgba(124, 58, 237, 0.95), rgba(34, 211, 238, 0.85));
+  box-shadow: var(--shadow2);
+  position: relative;
+  overflow: hidden;
+  flex: 0 0 auto;
+}
+
+.rpmr-logo::after {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.22),
+    transparent
+  );
+  transform: rotate(25deg) translateX(-40%);
+  animation: rpmr-sheen 5.5s ease-in-out infinite;
+}
+
+@keyframes rpmr-sheen {
+  0%,
+  70% {
+    transform: rotate(25deg) translateX(-65%);
+    opacity: 0;
+  }
+  85% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: rotate(25deg) translateX(65%);
+    opacity: 0;
+  }
+}
+
+.rpmr-brandtext {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.rpmr-brandname {
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.rpmr-brandtag {
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  color: var(--muted2);
+}
+
+.rpmr-navlinks {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.rpmr-navlinks a {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.74);
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  transition:
+    transform 0.18s ease,
+    background 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease;
+}
+
+.rpmr-navlinks a:hover {
+  color: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}

@@ -1,0 +1,58 @@
+/* Background effects / decorative layers */
+
+/* =========================
+   Background Effects
+   ========================= */
+
+.rpmr-bg-grid {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.3;
+  background:
+    linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(
+    closest-side at 50% 30%,
+    black 0%,
+    transparent 80%
+  );
+}
+
+.rpmr-bg-glow {
+  position: fixed;
+  inset: -40vh -20vw;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(
+      600px 600px at 30% 30%,
+      rgba(244, 114, 182, 0.12),
+      transparent 60%
+    ),
+    radial-gradient(
+      700px 700px at 70% 30%,
+      rgba(34, 211, 238, 0.1),
+      transparent 60%
+    ),
+    radial-gradient(
+      800px 800px at 50% 70%,
+      rgba(124, 58, 237, 0.12),
+      transparent 60%
+    );
+  filter: blur(20px);
+  opacity: 0.9;
+  animation: rpmr-floatGlow 18s ease-in-out infinite;
+}
+
+@keyframes rpmr-floatGlow {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, -18px, 0) scale(1.03);
+  }
+}

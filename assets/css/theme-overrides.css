@@ -1,0 +1,45 @@
+/* Theme/host overrides (WordPress/Elementor embedding fixes) */
+
+/* Fix: prevent nested scroll containers inside the RPMR page */
+.rpmr-site {
+  overflow: visible !important;
+}
+
+.rpmr-site .elementor-section,
+.rpmr-site .elementor-container,
+.rpmr-site .elementor-widget-wrap,
+.rpmr-site .elementor-column,
+.rpmr-site .elementor-widget,
+.rpmr-site .e-con,
+.rpmr-site .e-con-inner {
+  overflow: visible !important;
+  max-height: none !important;
+}
+
+/* Hide theme footer ONLY on the RPMR page */
+.page-id-7 footer,
+.page-id-7 #colophon,
+.page-id-7 .site-footer,
+.page-id-7 .elementor-location-footer {
+  display: none !important;
+}
+
+/* Remove any leftover spacing some themes add */
+.page-id-7 #page,
+.page-id-7 #content,
+.page-id-7 .site-content {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+@media (min-width: 1024px) {
+  .rpmr-burger {
+    display: none !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .rpmr-burger {
+    display: none !important;
+  }
+}

@@ -1,0 +1,249 @@
+/* Reusable components: buttons, cards, chips, metrics, etc. */
+
+/* =========================
+   Buttons
+   ========================= */
+
+.rpmr-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.92);
+  background: linear-gradient(
+    135deg,
+    rgba(124, 58, 237, 0.85),
+    rgba(34, 211, 238, 0.65)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 16px 40px rgba(124, 58, 237, 0.16);
+  transition:
+    transform 0.18s ease,
+    filter 0.18s ease,
+    box-shadow 0.18s ease;
+  white-space: nowrap;
+}
+
+/* Ensure gradients fully fill rounded elements (avoid edge cutoff/lines) */
+.rpmr-cta {
+  background-clip: padding-box;
+}
+
+.rpmr-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.88);
+  font-weight: 600;
+  font-size: 13px;
+  transition:
+    transform 0.18s ease,
+    background 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.rpmr-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: var(--shadow2);
+}
+
+.rpmr-btn.rpmr-primary {
+  background: linear-gradient(
+    135deg,
+    rgba(124, 58, 237, 0.85),
+    rgba(34, 211, 238, 0.55)
+  );
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 18px 48px rgba(124, 58, 237, 0.18);
+}
+
+/* Ensure gradients fully fill rounded primary buttons (avoid edge cutoff/lines) */
+.rpmr-btn.rpmr-primary {
+  border-color: transparent;
+  background-clip: padding-box;
+}
+
+/* =========================
+   Inline CTAs (e.g., card footer links)
+   ========================= */
+
+.rpmr-inline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 14px; /* space from paragraph above */
+  align-self: center; /* center inside flex/grid card layouts */
+
+  padding: 10px 12px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: -0.01em;
+
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  width: fit-content;
+}
+
+.rpmr-inline:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.3);
+}
+
+/* =========================
+   Metrics & Chips
+   ========================= */
+
+.rpmr-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.rpmr-metric {
+  padding: 14px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  transition:
+    transform 0.18s ease,
+    background 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.rpmr-metric:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+.rpmr-metric b {
+  display: block;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+}
+
+.rpmr-metric small {
+  color: var(--muted2);
+  line-height: 1.4;
+  display: block;
+}
+
+.rpmr-chiprow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.rpmr-chip {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.78);
+  padding: 8px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition:
+    transform 0.18s ease,
+    background 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.rpmr-chip:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+/* =========================
+   Cards
+   ========================= */
+
+.rpmr-grid3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.rpmr-card {
+  border-radius: var(--r);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: var(--shadow2);
+  padding: 18px;
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+  will-change: transform;
+}
+
+.rpmr-card::after {
+  content: "";
+  position: absolute;
+  inset: -60% -60%;
+  background: radial-gradient(
+    closest-side at 30% 40%,
+    rgba(34, 211, 238, 0.18),
+    transparent 60%
+  );
+  opacity: 0;
+  transform: rotate(12deg);
+  transition: opacity 0.22s ease;
+  pointer-events: none;
+}
+
+.rpmr-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.55);
+}
+
+.rpmr-card:hover::after {
+  opacity: 1;
+}
+
+.rpmr-card h4 {
+  margin: 0 0 8px;
+  font-size: 15px;
+  letter-spacing: -0.01em;
+}
+
+.rpmr-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.65;
+  font-size: 13.8px;
+}
+
+.rpmr-pill {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  white-space: nowrap;
+}

@@ -1,0 +1,128 @@
+/* Interactive hover animations (buttons, chips, cards, etc.) */
+
+/* =========================
+   Button & Interactive Hover Animations
+   ========================= */
+
+.rpmr-btn,
+.rpmr-inline,
+.rpmr-chip,
+.rpmr-metric,
+.rpmr-card,
+.rpmr-project,
+.rpmr-stack-item,
+.rpmr-footlinks a,
+.rpmr-pill,
+.rpmr-side-cta a,
+.rpmr-form input,
+.rpmr-form select,
+.rpmr-form textarea {
+  position: relative;
+  overflow: hidden;
+  transition:
+    background 0.22s cubic-bezier(.4,2,.6,1),
+    color 0.18s,
+    border-color 0.18s,
+    box-shadow 0.22s cubic-bezier(.4,2,.6,1),
+    transform 0.18s cubic-bezier(.4,2,.6,1);
+}
+
+.rpmr-btn::before,
+.rpmr-inline::before,
+.rpmr-chip::before,
+.rpmr-metric::before,
+.rpmr-card::before,
+.rpmr-project::before,
+.rpmr-stack-item::before,
+.rpmr-footlinks a::before,
+.rpmr-pill::before,
+.rpmr-side-cta a::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, var(--b, #22d3ee) 0%, var(--a, #7c3aed) 100%);
+  opacity: 0.18;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0.7);
+  transition: width 0.38s cubic-bezier(.4,2,.6,1), height 0.38s cubic-bezier(.4,2,.6,1), opacity 0.22s, transform 0.38s cubic-bezier(.4,2,.6,1);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.rpmr-btn:hover::before,
+.rpmr-inline:hover::before,
+.rpmr-chip:hover::before,
+.rpmr-metric:hover::before,
+.rpmr-card:hover::before,
+.rpmr-project:hover::before,
+.rpmr-stack-item:hover::before,
+.rpmr-footlinks a:hover::before,
+.rpmr-pill:hover::before,
+.rpmr-side-cta a:hover::before {
+  width: 220%;
+  height: 220%;
+  opacity: 0.32;
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.rpmr-btn:hover,
+.rpmr-inline:hover,
+.rpmr-chip:hover,
+.rpmr-metric:hover,
+.rpmr-card:hover,
+.rpmr-project:hover,
+.rpmr-stack-item:hover,
+.rpmr-footlinks a:hover,
+.rpmr-pill:hover,
+.rpmr-side-cta a:hover,
+.rpmr-form input:hover,
+.rpmr-form select:hover,
+.rpmr-form textarea:hover {
+  box-shadow: 0 6px 32px 0 var(--a, #7c3aed33), 0 0 0 2px var(--b, #22d3ee33);
+  transform: translateY(-2px) scale(1.03) rotate(-1deg);
+  background: linear-gradient(90deg, var(--a, #7c3aed) 0%, var(--b, #22d3ee) 100%) !important;
+  color: #fff;
+  border-color: var(--b, #22d3ee);
+}
+
+.rpmr-form input:focus,
+.rpmr-form select:focus,
+.rpmr-form textarea:focus {
+  box-shadow: 0 0 0 3px var(--b, #22d3ee55);
+  border-color: var(--a, #7c3aed);
+  background: var(--card2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rpmr-btn,
+  .rpmr-inline,
+  .rpmr-chip,
+  .rpmr-metric,
+  .rpmr-card,
+  .rpmr-project,
+  .rpmr-stack-item,
+  .rpmr-footlinks a,
+  .rpmr-pill,
+  .rpmr-side-cta a,
+  .rpmr-form input,
+  .rpmr-form select,
+  .rpmr-form textarea {
+    transition: none !important;
+  }
+
+  .rpmr-btn::before,
+  .rpmr-inline::before,
+  .rpmr-chip::before,
+  .rpmr-metric::before,
+  .rpmr-card::before,
+  .rpmr-project::before,
+  .rpmr-stack-item::before,
+  .rpmr-footlinks a::before,
+  .rpmr-pill::before,
+  .rpmr-side-cta a::before {
+    transition: none !important;
+  }
+}

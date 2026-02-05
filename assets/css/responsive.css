@@ -1,0 +1,174 @@
+/* Responsive rules (layout shifts + mobile menu) */
+
+/* =========================
+   Responsive Styles
+   ========================= */
+
+@media (max-width: 920px) {
+  .rpmr-hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rpmr-projects {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .rpmr-grid3 {
+    grid-template-columns: 1fr;
+  }
+
+  .rpmr-brand {
+    min-width: unset;
+  }
+
+  .rpmr-navlinks {
+    gap: 10px;
+  }
+
+  .rpmr-hero {
+    padding-top: 54px;
+  }
+
+  /* Mobile burger menu: links slide out to the left and fill header space */
+  .rpmr-nav {
+    flex-wrap: wrap;
+  }
+
+  .rpmr-navlinks {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    flex-wrap: nowrap;
+    position: relative;
+  }
+
+  .rpmr-nav-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    flex: 0 0 auto;
+  }
+
+  .rpmr-burger {
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.06);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .rpmr-burger-icon {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 4px;
+    transition: transform 0.22s ease;
+  }
+
+  .rpmr-burger[aria-expanded="true"] .rpmr-burger-icon {
+    transform: rotate(90deg);
+  }
+
+  .rpmr-burger-icon span {
+    width: 18px;
+    height: 2px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.85);
+  }
+
+  /* Hide menu on mobile by default; JS toggles .rpmr-menu-open on the nav */
+  .rpmr-mobile-menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 8px;
+    overflow: hidden;
+    white-space: nowrap;
+    flex: 1 1 auto;
+
+    max-width: 0;
+    opacity: 0;
+    transform: translateX(18px);
+    pointer-events: none;
+
+    transition:
+      max-width 0.22s ease,
+      opacity 0.18s ease,
+      transform 0.22s ease;
+  }
+
+  .rpmr-navlinks.rpmr-menu-open .rpmr-mobile-menu {
+    max-width: 1000px;
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+  }
+
+  /* Keep links stationary on mobile */
+  .rpmr-navlinks a {
+    transition: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .rpmr-navlinks a:hover,
+  .rpmr-navlinks a:active {
+    transform: none;
+  }
+}
+
+/* Smallest screens: use a vertical dropdown (<= 390px) */
+@media (max-width: 390px) {
+  .rpmr-mobile-menu {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 10px);
+    width: min(320px, 100%);
+    max-width: none;
+    flex: 0 0 auto;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    white-space: normal;
+    gap: 6px;
+    padding: 10px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(7, 10, 18, 0.85);
+    backdrop-filter: blur(12px);
+    z-index: 60;
+
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-6px);
+    pointer-events: none;
+
+    transition:
+      max-height 0.22s ease,
+      opacity 0.18s ease,
+      transform 0.22s ease;
+  }
+
+  .rpmr-navlinks.rpmr-menu-open .rpmr-mobile-menu {
+    max-height: 240px;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .rpmr-mobile-menu a {
+    display: block;
+    padding: 10px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.86);
+  }
+}
