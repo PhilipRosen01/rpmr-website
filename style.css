@@ -1078,8 +1078,8 @@ html {
   /* Optional: keep burger visible only on mobile */
 }
 
-/* Smallest screens: use a vertical dropdown (<= 424px) */
-@media (max-width: 424px) {
+/* Smallest screens: use a vertical dropdown (<= 390px) */
+@media (max-width: 390px) {
   .rpmr-mobile-menu {
     position: absolute;
     right: 0;
