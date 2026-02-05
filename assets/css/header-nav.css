@@ -31,54 +31,31 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  min-width: 220px;
+  min-width: 0;
+  max-width: 360px;
 }
 
 /* NOTE: currently styled as a placeholder gradient logo */
 .rpmr-logo {
-  width: 40px;
-  height: 40px;
+  width: 26%;
   border-radius: 14px;
-  background:
-    radial-gradient(
-      18px 18px at 30% 30%,
-      rgba(255, 255, 255, 0.35),
-      transparent 60%
-    ),
-    linear-gradient(135deg, rgba(124, 58, 237, 0.95), rgba(34, 211, 238, 0.85));
-  box-shadow: var(--shadow2);
-  position: relative;
+
+  display: block;
+  object-fit: contain;
+
+  /* remove background-image based rendering */
+  background: none;
+
+  /* avoid clipping weirdness */
   overflow: hidden;
+
+  box-shadow: var(--shadow2);
   flex: 0 0 auto;
 }
 
+/* Remove the old gradient + sheen overlay */
 .rpmr-logo::after {
-  content: "";
-  position: absolute;
-  inset: -40%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.22),
-    transparent
-  );
-  transform: rotate(25deg) translateX(-40%);
-  animation: rpmr-sheen 5.5s ease-in-out infinite;
-}
-
-@keyframes rpmr-sheen {
-  0%,
-  70% {
-    transform: rotate(25deg) translateX(-65%);
-    opacity: 0;
-  }
-  85% {
-    opacity: 0.85;
-  }
-  100% {
-    transform: rotate(25deg) translateX(65%);
-    opacity: 0;
-  }
+  content: none;
 }
 
 .rpmr-brandtext {
