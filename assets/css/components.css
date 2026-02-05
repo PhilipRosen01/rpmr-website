@@ -82,8 +82,9 @@
   align-items: center;
   justify-content: center;
 
-  margin-top: 14px; /* space from paragraph above */
-  align-self: center; /* center inside flex/grid card layouts */
+  /* default behavior (generic) */
+  margin-top: 14px;
+  align-self: flex-start;
 
   padding: 10px 12px;
   border-radius: 999px;
@@ -98,9 +99,44 @@
   width: fit-content;
 }
 
-.rpmr-inline:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.3);
+/* Services cards: pin inline CTA to the bottom and center it */
+#services .rpmr-grid3 {
+  align-items: stretch;
+}
+
+#services .rpmr-grid3 > .rpmr-card {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+
+  /* slightly tighter so cards don't feel empty */
+  height: 100%;
+  min-height: 0;
+  padding: 16px;
+}
+
+#services .rpmr-grid3 > .rpmr-card h4 {
+  margin-bottom: 6px;
+}
+
+#services .rpmr-grid3 > .rpmr-card p {
+  line-height: 1.6;
+  text-align: center;
+}
+
+#services .rpmr-grid3 > .rpmr-card > .rpmr-inline {
+  margin-top: auto;
+
+  /* horizontal centering inside the card */
+  margin-left: 0;
+  margin-right: 0;
+
+  /* keep a consistent gap from the content */
+  margin-top: 35px;
+
+  /* ensure horizontal centering with flex-column layout */
+  align-self: center;
 }
 
 /* =========================
@@ -195,6 +231,9 @@
     border-color 0.2s ease,
     box-shadow 0.2s ease;
   will-change: transform;
+
+  /* generic card layout */
+  display: block;
 }
 
 .rpmr-card::after {
