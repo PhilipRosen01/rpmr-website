@@ -9,12 +9,28 @@
   grid-template-columns: 1fr;
   gap: 16px;
   align-items: start;
+
+  /* allow decorative lines to sit outside child cards without affecting page */
+  overflow: visible;
 }
 
 @media (min-width: 768px) {
   .rpmr-contact-layout {
     grid-template-columns: minmax(260px, 0.75fr) minmax(520px, 1.25fr);
-    gap: 28px;
+    grid-template-rows: auto auto;
+    column-gap: 28px;
+    row-gap: 16px;
+  }
+
+  /* place the accent bar under the intro column only */
+  .rpmr-cta-block {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .rpmr-cta-actions {
+    grid-column: 2;
+    grid-row: 1 / span 2;
   }
 
   /* Stagger: drop the form column slightly below the intro panel */
@@ -60,8 +76,14 @@
   justify-content: space-between;
   gap: 16px;
   flex-wrap: wrap;
-  overflow: hidden;
+  overflow: visible;
   position: relative;
+
+  /* revert: no extra bottom padding needed */
+  padding-bottom: 22px;
+
+  /* isolate the sweep animation overlay to the CTA block bounds */
+  overflow: hidden;
 }
 
 .rpmr-cta-block::after {
@@ -78,6 +100,9 @@
   opacity: 0.4;
   animation: rpmr-sweep 6.5s ease-in-out infinite;
   pointer-events: none;
+
+  /* keep the sweep behind the accent line */
+  z-index: 1;
 }
 
 @keyframes rpmr-sweep {
@@ -117,6 +142,49 @@
   width: 100%;
   height: 100%;
   padding: 0;
+
+  /* anchor for the accent line above the form */
+  position: relative;
+  padding-top: 18px;
+
+  /* room for the bottom accent bar below the form */
+  padding-bottom: 18px;
+}
+
+/* Accent line ABOVE the contact form */
+.rpmr-cta-actions::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+
+  /* match the form width (max 620px, otherwise fill available width) */
+  width: min(100%, 620px);
+
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--b), var(--a));
+  opacity: 0.95;
+  filter: drop-shadow(0 18px 40px rgba(124, 58, 237, 0.18));
+  pointer-events: none;
+}
+
+/* Accent line BELOW the contact form (does not interfere with form animations) */
+.rpmr-cta-actions::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+
+  width: min(100%, 620px);
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--b), var(--a));
+  opacity: 0.95;
+  filter: drop-shadow(0 18px 40px rgba(124, 58, 237, 0.18));
+  pointer-events: none;
 }
 
 .rpmr-form {

@@ -8,6 +8,28 @@
 .rpmr-section-head-services {
   justify-content: center;
   text-align: center;
+  padding-bottom: 15px;
+}
+
+/* Bottom gradient accent (matches Projects bar, but horizontal + below) */
+.rpmr-section-head-services > div {
+  position: relative;
+  padding-bottom: 18px;
+}
+
+.rpmr-section-head-services > div::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+
+  width: min(220px, 62%);
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--b), var(--a));
+  opacity: 0.95;
+  box-shadow: 0 18px 40px rgba(124, 58, 237, 0.18);
 }
 
 /* Add more separation before the Services cards */
