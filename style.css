@@ -1,9 +1,8 @@
-/* Replace everything in this file with: */
 /*
-  This file is intentionally small.
-  Use `assets/css/index.css` for the full stylesheet (split into modules).
+  Optional override layer.
 
-  Keeping `style.css` as the public entry avoids updating other tools/links.
+  Hostinger/shared-hosting: avoid @import chains for reliability.
+  The main stylesheets are linked directly in index.html.
+
+  Keep this file for small last-minute overrides only.
 */
-
-@import url("assets/css/index.css");

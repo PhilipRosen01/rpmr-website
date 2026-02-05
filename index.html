@@ -13,6 +13,25 @@
       rel="stylesheet"
     />
 
+    <!--
+      Hostinger/shared-hosting reliability:
+      Avoid CSS @import chains and load each stylesheet explicitly.
+      Order matters.
+    -->
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/backgrounds.css" />
+    <link rel="stylesheet" href="assets/css/header-nav.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+    <link rel="stylesheet" href="assets/css/sections.css" />
+    <link rel="stylesheet" href="assets/css/section-header-variants.css" />
+    <link rel="stylesheet" href="assets/css/forms.css" />
+    <link rel="stylesheet" href="assets/css/footer.css" />
+    <link rel="stylesheet" href="assets/css/animations.css" />
+    <link rel="stylesheet" href="assets/css/responsive.css" />
+    <link rel="stylesheet" href="assets/css/interactive.css" />
+    <link rel="stylesheet" href="assets/css/theme-overrides.css" />
+
+    <!-- keep as final layer for quick overrides if needed -->
     <link rel="stylesheet" href="style.css" />
 
     <!-- Social preview (Open Graph / Twitter Card) -->
@@ -298,7 +317,7 @@
 
             <div class="rpmr-cta-actions">
               <img class="rpmr-contact-logo" src="assets/images/rpmr-logo.png" alt="RPMR Creations" />
-              <form id="rpmr-contact-form" class="rpmr-form" method="POST" action="/send.php">
+              <form id="rpmr-contact-form" class="rpmr-form" method="POST" action="send.php">
                 <!-- Honeypot (spam protection). Should stay empty. -->
                 <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off" />
                 <div class="rpmr-form-group">

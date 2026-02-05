@@ -52,62 +52,82 @@
   z-index: 1;
 }
 
-.rpmr-btn:hover::before,
-.rpmr-inline:hover::before,
-.rpmr-chip:hover::before,
-.rpmr-metric:hover::before,
-.rpmr-card:hover::before,
-.rpmr-project:hover::before,
-.rpmr-stack-item:hover::before,
-.rpmr-footlinks a:hover::before,
-.rpmr-pill:hover::before,
-.rpmr-side-cta a:hover::before {
-  width: 220%;
-  height: 220%;
-  opacity: 0.32;
-  transform: translate(-50%, -50%) scale(1.1);
+@media (hover: hover) and (pointer: fine) {
+  .rpmr-btn:hover::before,
+  .rpmr-inline:hover::before,
+  .rpmr-chip:hover::before,
+  .rpmr-metric:hover::before,
+  .rpmr-card:hover::before,
+  .rpmr-project:hover::before,
+  .rpmr-stack-item:hover::before,
+  .rpmr-footlinks a:hover::before,
+  .rpmr-pill:hover::before,
+  .rpmr-side-cta a:hover::before {
+    width: 220%;
+    height: 220%;
+    opacity: 0.32;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+
+  .rpmr-btn:hover,
+  .rpmr-inline:hover,
+  .rpmr-chip:hover,
+  .rpmr-metric:hover,
+  .rpmr-card:hover,
+  .rpmr-project:hover,
+  .rpmr-stack-item:hover,
+  .rpmr-footlinks a:hover,
+  .rpmr-pill:hover,
+  .rpmr-side-cta a:hover,
+  .rpmr-form input:hover,
+  .rpmr-form select:hover,
+  .rpmr-form textarea:hover {
+    box-shadow: 0 6px 32px 0 var(--a, #7c3aed33), 0 0 0 2px var(--b, #22d3ee33);
+    transform: translateY(-2px) scale(1.03) rotate(-1deg);
+    background: linear-gradient(90deg, var(--a, #7c3aed) 0%, var(--b, #22d3ee) 100%) !important;
+    color: #fff;
+    border-color: var(--b, #22d3ee);
+  }
+
+  /* Projects: hovering either the pill or the card should animate both */
+  .rpmr-project-row:hover .rpmr-project,
+  .rpmr-project-row:focus-within .rpmr-project,
+  .rpmr-project-row:hover .rpmr-pill,
+  .rpmr-project-row:focus-within .rpmr-pill {
+    box-shadow: 0 6px 32px 0 var(--a, #7c3aed33), 0 0 0 2px var(--b, #22d3ee33);
+    transform: translateY(-2px) scale(1.03) rotate(-1deg);
+    background: linear-gradient(90deg, var(--a, #7c3aed) 0%, var(--b, #22d3ee) 100%) !important;
+    color: #fff;
+    border-color: var(--b, #22d3ee);
+  }
+
+  .rpmr-project-row:hover .rpmr-project::before,
+  .rpmr-project-row:focus-within .rpmr-project::before,
+  .rpmr-project-row:hover .rpmr-pill::before,
+  .rpmr-project-row:focus-within .rpmr-pill::before {
+    width: 220%;
+    height: 220%;
+    opacity: 0.32;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
 }
 
-.rpmr-btn:hover,
-.rpmr-inline:hover,
-.rpmr-chip:hover,
-.rpmr-metric:hover,
-.rpmr-card:hover,
-.rpmr-project:hover,
-.rpmr-stack-item:hover,
-.rpmr-footlinks a:hover,
-.rpmr-pill:hover,
-.rpmr-side-cta a:hover,
-.rpmr-form input:hover,
-.rpmr-form select:hover,
-.rpmr-form textarea:hover {
-  box-shadow: 0 6px 32px 0 var(--a, #7c3aed33), 0 0 0 2px var(--b, #22d3ee33);
-  transform: translateY(-2px) scale(1.03) rotate(-1deg);
-  background: linear-gradient(90deg, var(--a, #7c3aed) 0%, var(--b, #22d3ee) 100%) !important;
-  color: #fff;
-  border-color: var(--b, #22d3ee);
-}
-
-/* Projects: hovering either the pill or the card should animate both */
-.rpmr-project-row:hover .rpmr-project,
-.rpmr-project-row:focus-within .rpmr-project,
-.rpmr-project-row:hover .rpmr-pill,
-.rpmr-project-row:focus-within .rpmr-pill {
-  box-shadow: 0 6px 32px 0 var(--a, #7c3aed33), 0 0 0 2px var(--b, #22d3ee33);
-  transform: translateY(-2px) scale(1.03) rotate(-1deg);
-  background: linear-gradient(90deg, var(--a, #7c3aed) 0%, var(--b, #22d3ee) 100%) !important;
-  color: #fff;
-  border-color: var(--b, #22d3ee);
-}
-
-.rpmr-project-row:hover .rpmr-project::before,
-.rpmr-project-row:focus-within .rpmr-project::before,
-.rpmr-project-row:hover .rpmr-pill::before,
-.rpmr-project-row:focus-within .rpmr-pill::before {
-  width: 220%;
-  height: 220%;
-  opacity: 0.32;
-  transform: translate(-50%, -50%) scale(1.1);
+/* On touch devices, avoid sticky hover transforms */
+@media (hover: none) {
+  .rpmr-btn:hover,
+  .rpmr-inline:hover,
+  .rpmr-chip:hover,
+  .rpmr-metric:hover,
+  .rpmr-card:hover,
+  .rpmr-project:hover,
+  .rpmr-stack-item:hover,
+  .rpmr-footlinks a:hover,
+  .rpmr-pill:hover,
+  .rpmr-side-cta a:hover {
+    transform: none !important;
+    box-shadow: none !important;
+    background: inherit !important;
+  }
 }
 
 .rpmr-form input:focus,
@@ -118,61 +138,64 @@
   background: var(--card2);
 }
 
-/* Services: don't let the card hover effect visually apply to the inline CTA unless it's the hovered element */
-.rpmr-card:hover .rpmr-inline:not(:hover) {
-  background: rgba(255, 255, 255, 0.05) !important;
-  border-color: rgba(255, 255, 255, 0.12) !important;
-  box-shadow: none !important;
-  transform: none !important;
-  color: rgba(255, 255, 255, 0.9) !important;
-}
+/* Services: hover-only refinements (disable on touch to avoid sticky hover states) */
+@media (hover: hover) and (pointer: fine) {
+  /* Services: don't let the card hover effect visually apply to the inline CTA unless it's the hovered element */
+  .rpmr-card:hover .rpmr-inline:not(:hover) {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    box-shadow: none !important;
+    transform: none !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+  }
 
-.rpmr-card:hover .rpmr-inline:not(:hover)::before {
-  width: 0 !important;
-  height: 0 !important;
-  opacity: 0 !important;
-}
+  .rpmr-card:hover .rpmr-inline:not(:hover)::before {
+    width: 0 !important;
+    height: 0 !important;
+    opacity: 0 !important;
+  }
 
-/* Services: if hovering the inline CTA, do NOT apply the card hover visuals */
-.rpmr-card:has(.rpmr-inline:hover):hover {
-  box-shadow: var(--shadow2) !important;
-  transform: none !important;
-}
+  /* Services: if hovering the inline CTA, do NOT apply the card hover visuals */
+  .rpmr-card:has(.rpmr-inline:hover):hover {
+    box-shadow: var(--shadow2) !important;
+    transform: none !important;
+  }
 
-.rpmr-card:has(.rpmr-inline:hover):hover::before {
-  width: 0 !important;
-  height: 0 !important;
-  opacity: 0 !important;
-}
+  .rpmr-card:has(.rpmr-inline:hover):hover::before {
+    width: 0 !important;
+    height: 0 !important;
+    opacity: 0 !important;
+  }
 
-/* Services: hovering the inner inline CTA should not trigger card hover */
-#services .rpmr-card:hover:has(.rpmr-inline:hover) {
-  background: rgba(255, 255, 255, 0.04) !important;
-  border-color: rgba(255, 255, 255, 0.1) !important;
-  box-shadow: var(--shadow2) !important;
-  transform: none !important;
-}
+  /* Services: hovering the inner inline CTA should not trigger card hover */
+  #services .rpmr-card:hover:has(.rpmr-inline:hover) {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    box-shadow: var(--shadow2) !important;
+    transform: none !important;
+  }
 
-#services .rpmr-card:hover:has(.rpmr-inline:hover)::before {
-  width: 0 !important;
-  height: 0 !important;
-  opacity: 0 !important;
-}
+  #services .rpmr-card:hover:has(.rpmr-inline:hover)::before {
+    width: 0 !important;
+    height: 0 !important;
+    opacity: 0 !important;
+  }
 
-/* Services: when the card is hovered, keep the inline CTA looking normal unless the CTA itself is hovered */
-#services .rpmr-card:hover .rpmr-inline:not(:hover) {
-  background: #28313f !important;
-  border-color: rgba(255, 255, 255, 0.12) !important;
-  color: rgba(255, 255, 255, 0.9) !important;
-  box-shadow: none !important;
-  transform: none !important;
-  filter: none !important;
-}
+  /* Services: when the card is hovered, keep the inline CTA looking normal unless the CTA itself is hovered */
+  #services .rpmr-card:hover .rpmr-inline:not(:hover) {
+    background: #28313f !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    box-shadow: none !important;
+    transform: none !important;
+    filter: none !important;
+  }
 
-#services .rpmr-card:hover .rpmr-inline:not(:hover)::before {
-  width: 0 !important;
-  height: 0 !important;
-  opacity: 0 !important;
+  #services .rpmr-card:hover .rpmr-inline:not(:hover)::before {
+    width: 0 !important;
+    height: 0 !important;
+    opacity: 0 !important;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

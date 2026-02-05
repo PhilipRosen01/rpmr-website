@@ -1,0 +1,18 @@
+/*
+  Single-file CSS bundle for more consistent hosting behavior.
+  Some shared hosts can have issues with nested CSS @import chains.
+  This file inlines the site CSS modules in the same order as assets/css/index.css.
+*/
+
+@import url("./base.css");
+@import url("./backgrounds.css");
+@import url("./header-nav.css");
+@import url("./components.css");
+@import url("./sections.css");
+@import url("./section-header-variants.css");
+@import url("./forms.css");
+@import url("./footer.css");
+@import url("./animations.css");
+@import url("./responsive.css");
+@import url("./interactive.css");
+@import url("./theme-overrides.css");
