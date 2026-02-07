@@ -33,6 +33,31 @@ html {
 
   /* Opaque surface color (used for overlap cutouts / seam hiding) */
   --rpmr-surface: #090f1e;
+
+  /* =========================
+     Typography scale (site-wide)
+     Tweak these once to update all headings/body text.
+     ========================= */
+  --rpmr-fs-body: 15px;
+  --rpmr-lh-body: 1.65;
+
+  --rpmr-fs-h1: clamp(42px, 5.8vw, 68px);
+  --rpmr-lh-h1: 1.02;
+
+  --rpmr-fs-h2: 36px;
+  --rpmr-lh-h2: 1.15;
+
+  --rpmr-fs-h3: 28px;
+  --rpmr-lh-h3: 1.25;
+
+  --rpmr-fs-h4: 20px;
+  --rpmr-lh-h4: 1.25;
+
+  --rpmr-fs-h5: 18px;
+  --rpmr-lh-h5: 1.25;
+
+  --rpmr-fs-kicker: 12px;
+  --rpmr-fs-subtitle: 14.5px;
 }
 
 html,
@@ -41,6 +66,60 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/*
+  Tag-based typography defaults (scoped)
+  This ensures using semantic tags (h1/h2/h3/...) automatically gets consistent styling.
+*/
+.rpmr-site {
+  font-size: var(--rpmr-fs-body);
+  line-height: var(--rpmr-lh-body);
+}
+
+.rpmr-site p {
+  margin: 0;
+}
+
+.rpmr-site h1,
+.rpmr-site h2,
+.rpmr-site h3,
+.rpmr-site h4,
+.rpmr-site h5,
+.rpmr-site h6 {
+  margin: 0;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.rpmr-site h1 {
+  font-size: var(--rpmr-fs-h1);
+  line-height: var(--rpmr-lh-h1);
+  letter-spacing: -0.04em;
+}
+
+.rpmr-site h2 {
+  font-size: var(--rpmr-fs-h2);
+  line-height: var(--rpmr-lh-h2);
+  letter-spacing: -0.02em;
+}
+
+.rpmr-site h3 {
+  font-size: var(--rpmr-fs-h3);
+  line-height: var(--rpmr-lh-h3);
+  letter-spacing: -0.01em;
+}
+
+.rpmr-site h4 {
+  font-size: var(--rpmr-fs-h4);
+  line-height: var(--rpmr-lh-h4);
+  letter-spacing: -0.01em;
+}
+
+.rpmr-site h5 {
+  font-size: var(--rpmr-fs-h5);
+  line-height: var(--rpmr-lh-h5);
+  letter-spacing: -0.01em;
 }
 
 .rpmr-site {

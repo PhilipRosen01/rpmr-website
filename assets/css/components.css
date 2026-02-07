@@ -263,9 +263,8 @@
 }
 
 .rpmr-card h4 {
+  /* inherit global h4 sizing from base.css */
   margin: 0 0 8px;
-  font-size: 15px;
-  letter-spacing: -0.01em;
 }
 
 .rpmr-card p {
