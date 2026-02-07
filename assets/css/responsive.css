@@ -14,7 +14,7 @@
   }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 898px) {
   .rpmr-grid3 {
     grid-template-columns: 1fr;
   }

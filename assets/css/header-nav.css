@@ -41,11 +41,17 @@
 }
 
 .rpmr-brand {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 12px;
-  min-width: 0;
-  max-width: 360px;
+
+  /* shrink-wrap to content */
+  width: fit-content;
+  max-width: none;
+  min-width: auto;
+
+  /* don't let the flex container stretch/steal space */
+  flex: 0 0 auto;
 }
 
 /* Brand logo image */
@@ -80,14 +86,12 @@
 }
 
 .rpmr-brandname {
-  font-size: 14px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.85);
 }
 
 .rpmr-brandtag {
-  font-size: 12px;
   letter-spacing: 0.02em;
   color: var(--muted2);
 }
@@ -101,7 +105,6 @@
 }
 
 .rpmr-navlinks a {
-  font-size: 13px;
   color: rgba(255, 255, 255, 0.74);
   padding: 10px 12px;
   border-radius: 999px;

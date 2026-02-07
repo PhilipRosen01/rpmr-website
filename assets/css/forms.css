@@ -129,7 +129,6 @@
   margin: 6px 0 0;
   color: var(--muted);
   line-height: 1.6;
-  font-size: 14px;
   max-width: 64ch;
 }
 
@@ -243,7 +242,6 @@
 }
 
 .rpmr-form label {
-  font-size: 1rem;
   color: var(--muted);
   font-weight: 500;
 }
@@ -256,7 +254,6 @@
   border: 1px solid var(--line);
   background: var(--card);
   color: var(--text);
-  font-size: 1rem;
   font-family: inherit;
   transition: border 0.18s;
 }
@@ -275,31 +272,8 @@
 }
 
 .rpmr-form-status {
-  font-size: 0.98rem;
   color: var(--c);
   min-height: 1.2em;
-}
-
-/* Layout overrides from earlier iterations */
-.rpmr-form {
-  flex: 1 1 auto;
-  width: 100%;
-  max-width: none;
-  min-width: 0;
-  box-sizing: border-box;
-  padding: 24px 20px;
-  margin: 0;
-  align-self: stretch;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.rpmr-cta-actions {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  justify-content: center;
 }
 
 /* Tighten the left column and let the form take more space */
@@ -308,29 +282,14 @@
 }
 
 .rpmr-contact-intro h3 {
-  font-size: clamp(22px, 2.2vw, 34px);
   line-height: 1.08;
   letter-spacing: -0.03em;
 }
 
 .rpmr-contact-intro p {
-  font-size: 16px;
   line-height: 1.75;
   margin-top: 12px;
   color: rgba(255, 255, 255, 0.78);
-}
-
-@media (min-width: 768px) {
-  .rpmr-contact-intro p {
-    font-size: 16.5px;
-  }
-}
-
-/* The CTA block now only contains the intro, so it doesn't need a 2-column grid */
-@media (min-width: 768px) {
-  .rpmr-cta-block {
-    display: block;
-  }
 }
 
 /* Ensure the contact section always has breathing room above the footer */
