@@ -112,6 +112,22 @@
     pointer-events: auto;
   }
 
+  /* Slide-out menu links: slightly smaller so they fit side-by-side */
+  .rpmr-mobile-menu a {
+    font-size: 12px;
+    padding: 9px 10px;
+  }
+
+  /* As screens shrink, tighten the slide-out menu spacing so links can stay on one row */
+  .rpmr-mobile-menu {
+    gap: 8px;
+  }
+
+  .rpmr-mobile-menu a {
+    font-size: 12px;
+    padding: 9px 10px;
+  }
+
   /* Keep links stationary on mobile */
   .rpmr-navlinks a {
     transition: none;
@@ -170,5 +186,40 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
     background: rgba(255, 255, 255, 0.06);
     color: rgba(255, 255, 255, 0.86);
+
+    /* dropdown can use slightly larger text */
+    font-size: 13px;
+  }
+}
+
+/* Tighter slide-out spacing for smaller tablets/large phones */
+@media (max-width: 720px) {
+  .rpmr-navlinks {
+    gap: 8px;
+  }
+
+  .rpmr-mobile-menu {
+    gap: 6px;
+  }
+
+  .rpmr-mobile-menu a {
+    font-size: 11.5px;
+    padding: 8px 9px;
+  }
+}
+
+/* Tightest slide-out spacing right before switching to dropdown at 390px */
+@media (max-width: 520px) {
+  .rpmr-navlinks {
+    gap: 6px;
+  }
+
+  .rpmr-mobile-menu {
+    gap: 5px;
+  }
+
+  .rpmr-mobile-menu a {
+    font-size: 11px;
+    padding: 7px 8px;
   }
 }
