@@ -8,13 +8,26 @@
   position: sticky;
   top: 0;
   z-index: 50;
+
+  /* fallback first */
+  background: rgba(7, 10, 18, 0.86);
+
+  /* upgraded blur where supported */
+  -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
+
   background: linear-gradient(
     180deg,
     rgba(7, 10, 18, 0.78),
     rgba(7, 10, 18, 0.35)
   );
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .rpmr-header {
+    background: rgba(7, 10, 18, 0.92);
+  }
 }
 
 .rpmr-nav {
@@ -35,27 +48,29 @@
   max-width: 360px;
 }
 
-/* NOTE: currently styled as a placeholder gradient logo */
+/* Brand logo image */
 .rpmr-logo {
-  width: 26%;
-  border-radius: 14px;
+  /* consistent sizing */
+  block-size: 44px;
+  inline-size: auto;
+
+  /* protect aspect ratio across engines */
+  aspect-ratio: 4 / 1;
+  max-inline-size: 180px;
 
   display: block;
+  height: auto; /* fallback */
+  width: auto;  /* fallback */
   object-fit: contain;
 
-  /* remove background-image based rendering */
-  background: none;
-
-  /* avoid clipping weirdness */
-  overflow: hidden;
-
-  box-shadow: var(--shadow2);
   flex: 0 0 auto;
 }
 
-/* Remove the old gradient + sheen overlay */
-.rpmr-logo::after {
-  content: none;
+@media (max-width: 760px) {
+  .rpmr-logo {
+    height: 38px;
+    max-width: 120px;
+  }
 }
 
 .rpmr-brandtext {

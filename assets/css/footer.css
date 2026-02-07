@@ -23,12 +23,22 @@
 }
 
 .rpmr-footer-logo {
-  width: min(180px, 42vw);
-  height: auto;
+  block-size: 70px;
+  inline-size: auto;
+  aspect-ratio: 4 / 1;
+  max-inline-size: min(240px, 70vw);
+
   display: block;
+  object-fit: contain;
   justify-self: center;
   opacity: 0.9;
   filter: drop-shadow(0 12px 26px rgba(0, 0, 0, 0.5));
+}
+
+@media (max-width: 520px) {
+  .rpmr-footer-logo {
+    height: 58px;
+  }
 }
 
 .rpmr-footlinks {

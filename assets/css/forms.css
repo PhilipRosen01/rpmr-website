@@ -164,18 +164,36 @@
 }
 
 .rpmr-contact-logo {
-  /* match form width and center */
-  width: min(100%, 320px);
-  max-width: 620px;
-  margin-left: auto;
-  margin-right: auto;
+  block-size: 70px;
+  inline-size: auto;
+  aspect-ratio: 4 / 1;
+  max-inline-size: min(320px, 80vw);
 
   display: block;
-  text-align: center;
-  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.45));
+  object-fit: contain;
 }
 
-/* Accent line ABOVE the contact form */
+@media (max-width: 520px) {
+  .rpmr-contact-logo {
+    height: 58px;
+  }
+}
+
+/* Accent bar element ABOVE the contact form (reliable across browsers/layouts) */
+.rpmr-form-accent {
+  width: min(100%, 620px);
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--b), var(--a));
+  opacity: 0.95;
+  filter: drop-shadow(0 18px 40px rgba(124, 58, 237, 0.18));
+  pointer-events: none;
+
+  /* spacing: sits between logo and form */
+  margin: 4px 0 2px;
+}
+
+/* No pseudo-element top bar; we use the real element above */
 .rpmr-cta-actions::before {
   content: none;
 }
@@ -282,6 +300,7 @@
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 /* Tighten the left column and let the form take more space */

@@ -4,6 +4,14 @@
    Scroll Reveal Animations
    ========================= */
 
+/* Default (cross-browser) state: visible */
+.rpmr-reveal,
+.rpmr-reveal-2,
+.rpmr-stagger > * {
+  opacity: 1;
+  transform: none;
+}
+
 @supports (animation-timeline: view()) {
   .rpmr-reveal {
     opacity: 0;

@@ -14,11 +14,25 @@
     linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
   background-size: 64px 64px;
+
+  /* Masking compatibility */
+  -webkit-mask-image: radial-gradient(
+    closest-side at 50% 30%,
+    black 0%,
+    transparent 80%
+  );
   mask-image: radial-gradient(
     closest-side at 50% 30%,
     black 0%,
     transparent 80%
   );
+}
+
+/* If masking isn't supported, just soften it rather than looking broken */
+@supports not (mask-image: radial-gradient(black, transparent)) {
+  .rpmr-bg-grid {
+    opacity: 0.16;
+  }
 }
 
 .rpmr-bg-glow {
