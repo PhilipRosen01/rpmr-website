@@ -102,6 +102,21 @@
 // `rpmr-touch-hover` state (stays until you tap elsewhere or tap again).
 // Respects prefers-reduced-motion.
 (() => {
+  // Fallback canonicalization: if someone lands on `/index.html`, replace it with `/`.
+  // This is not a substitute for a proper 301, but it fixes the visible URL for users
+  // when host-level redirects are hard to configure.
+  try {
+    const url = new URL(window.location.href);
+    if (url.pathname === '/index.html' || url.pathname.endsWith('/index.html')) {
+      url.pathname = url.pathname.replace(/index\.html$/, '');
+      if (!url.pathname.endsWith('/')) url.pathname += '/';
+      window.location.replace(url.toString());
+      return;
+    }
+  } catch {
+    // ignore
+  }
+
   const prefersReducedMotion = () =>
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 

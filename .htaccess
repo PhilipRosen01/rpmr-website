@@ -7,3 +7,15 @@
 <FilesMatch "^(config\.php(~|\.bak|\.old|\.orig|\.save|\.swp)|config\.php\.)">
   Require all denied
 </FilesMatch>
+
+# Canonicalize URLs (SEO): force HTTPS + non-WWW + remove explicit /index.html
+RewriteEngine On
+
+# Redirect only when the browser explicitly requests /index.html
+RewriteCond %{THE_REQUEST} \s/+index\.html(?:\?|[\s]) [NC]
+RewriteRule ^index\.html$ https://rpmrcreations.com/ [R=301,L]
+
+# Force HTTPS and non-WWW for all other requests
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} ^www\.rpmrcreations\.com$ [NC]
+RewriteRule ^ https://rpmrcreations.com%{REQUEST_URI} [R=301,L]
