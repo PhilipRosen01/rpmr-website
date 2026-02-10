@@ -104,6 +104,27 @@
   justify-content: flex-end;
 }
 
+/* Prevent awkward wrapping right above the mobile breakpoint (899–920px).
+   Keep the inline menu to the left of the CTA instead of stacking above it. */
+@media (min-width: 899px) and (max-width: 920px) {
+  .rpmr-navlinks {
+    flex-wrap: nowrap;
+    gap: 12px;
+  }
+
+  .rpmr-navlinks a:not(.rpmr-cta) {
+    padding: 9px 10px;
+  }
+
+  .rpmr-brandname {
+    letter-spacing: 0.1em;
+  }
+
+  .rpmr-brandtag {
+    font-size: 12.5px;
+  }
+}
+
 .rpmr-navlinks a {
   color: rgba(255, 255, 255, 0.74);
   padding: 10px 12px;

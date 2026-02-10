@@ -235,3 +235,27 @@
     margin: 0 2px;
   }
 }
+
+/* As we approach desktop widths (still using the mobile expanded menu),
+   increase item size + spacing for readability. */
+@media (min-width: 721px) and (max-width: 898px) {
+  .rpmr-mobile-menu a {
+    font-size: 12.5px;
+    padding: 9px 6px;
+  }
+
+  .rpmr-mobile-menu .rpmr-menu-sep {
+    margin: 0 6px;
+  }
+}
+
+@media (min-width: 820px) and (max-width: 898px) {
+  .rpmr-mobile-menu a {
+    font-size: 13px;
+    padding: 10px 8px;
+  }
+
+  .rpmr-mobile-menu .rpmr-menu-sep {
+    margin: 0 8px;
+  }
+}

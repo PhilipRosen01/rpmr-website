@@ -57,9 +57,15 @@
     const menus = document.querySelectorAll('.rpmr-mobile-menu');
     if (!menus.length) return;
 
+    const shouldHaveSeparators = window.matchMedia(
+      '(max-width: 898px) and (min-width: 391px)'
+    ).matches;
+
     menus.forEach((menu) => {
       // Idempotent: remove previously inserted separators
       menu.querySelectorAll('.rpmr-menu-sep').forEach((sep) => sep.remove());
+
+      if (!shouldHaveSeparators) return;
 
       // Only place separators between direct child links
       const links = Array.from(menu.children).filter(
