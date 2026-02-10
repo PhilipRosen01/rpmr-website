@@ -258,6 +258,16 @@
   transition: border 0.18s;
 }
 
+/* iOS Safari: inputs with computed font-size < 16px trigger viewport zoom on focus.
+   Keep form controls at 16px+ on mobile to prevent that zoom. */
+@media (max-width: 898px) {
+  .rpmr-form input,
+  .rpmr-form select,
+  .rpmr-form textarea {
+    font-size: 16px;
+  }
+}
+
 .rpmr-form input:focus,
 .rpmr-form select:focus,
 .rpmr-form textarea:focus {
