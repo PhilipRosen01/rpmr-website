@@ -112,7 +112,9 @@
   }
 }
 
-/* On touch devices, avoid sticky hover transforms */
+/* On touch devices, avoid sticky hover transforms by default; provide a class-based
+   touch-hover alternative so we can simulate desktop hover visuals on touch when
+   desired via JS. */
 @media (hover: none) {
   .rpmr-btn:hover,
   .rpmr-inline:hover,
@@ -127,6 +129,65 @@
     transform: none !important;
     box-shadow: none !important;
     background: inherit !important;
+  }
+}
+
+/* Touch-simulated hover: apply the same visuals as desktop :hover when the
+   element has the `rpmr-touch-hover` class (added/removed by JS). Scoped to
+   coarse pointers to avoid interfering with desktop behaviors. */
+@media (hover: none) and (pointer: coarse) {
+  .rpmr-btn.rpmr-touch-hover,
+  .rpmr-inline.rpmr-touch-hover,
+  .rpmr-chip.rpmr-touch-hover,
+  .rpmr-metric.rpmr-touch-hover,
+  .rpmr-card.rpmr-touch-hover,
+  .rpmr-project.rpmr-touch-hover,
+  .rpmr-stack-item.rpmr-touch-hover,
+  .rpmr-footlinks a.rpmr-touch-hover,
+  .rpmr-pill.rpmr-touch-hover,
+  .rpmr-side-cta a.rpmr-touch-hover,
+  .rpmr-form input.rpmr-touch-hover,
+  .rpmr-form select.rpmr-touch-hover,
+  .rpmr-form textarea.rpmr-touch-hover {
+    box-shadow: 0 6px 32px 0 var(--a, #7c3aed33), 0 0 0 2px var(--b, #22d3ee33);
+    transform: translateY(-2px) scale(1.03) rotate(-1deg);
+    background: linear-gradient(90deg, var(--a, #7c3aed) 0%, var(--b, #22d3ee) 100%) !important;
+    color: #fff;
+    border-color: var(--b, #22d3ee);
+  }
+
+  .rpmr-btn.rpmr-touch-hover::before,
+  .rpmr-inline.rpmr-touch-hover::before,
+  .rpmr-chip.rpmr-touch-hover::before,
+  .rpmr-metric.rpmr-touch-hover::before,
+  .rpmr-card.rpmr-touch-hover::before,
+  .rpmr-project.rpmr-touch-hover::before,
+  .rpmr-stack-item.rpmr-touch-hover::before,
+  .rpmr-footlinks a.rpmr-touch-hover::before,
+  .rpmr-pill.rpmr-touch-hover::before,
+  .rpmr-side-cta a.rpmr-touch-hover::before {
+    width: 220%;
+    height: 220%;
+    opacity: 0.32;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+
+  /* Projects: support group-hover-like visuals via applying the class to the row */
+  .rpmr-project-row.rpmr-touch-hover .rpmr-project,
+  .rpmr-project-row.rpmr-touch-hover .rpmr-pill {
+    box-shadow: 0 6px 32px 0 var(--a, #7c3aed33), 0 0 0 2px var(--b, #22d3ee33);
+    transform: translateY(-2px) scale(1.03) rotate(-1deg);
+    background: linear-gradient(90deg, var(--a, #7c3aed) 0%, var(--b, #22d3ee) 100%) !important;
+    color: #fff;
+    border-color: var(--b, #22d3ee);
+  }
+
+  .rpmr-project-row.rpmr-touch-hover .rpmr-project::before,
+  .rpmr-project-row.rpmr-touch-hover .rpmr-pill::before {
+    width: 220%;
+    height: 220%;
+    opacity: 0.32;
+    transform: translate(-50%, -50%) scale(1.1);
   }
 }
 
@@ -227,4 +288,77 @@
   .rpmr-side-cta a::before {
     transition: none !important;
   }
+}
+
+/* Fallback: ensure touch-hover visuals apply regardless of media-query detection.
+   Some devices report hover/pointer differently; the JS adds `rpmr-touch-hover`
+   only on touch devices, so it's safe to apply these styles globally. */
+.rpmr-btn.rpmr-touch-hover,
+.rpmr-inline.rpmr-touch-hover,
+.rpmr-chip.rpmr-touch-hover,
+.rpmr-metric.rpmr-touch-hover,
+.rpmr-card.rpmr-touch-hover,
+.rpmr-project.rpmr-touch-hover,
+.rpmr-stack-item.rpmr-touch-hover,
+.rpmr-footlinks a.rpmr-touch-hover,
+.rpmr-pill.rpmr-touch-hover,
+.rpmr-side-cta a.rpmr-touch-hover,
+.rpmr-form input.rpmr-touch-hover,
+.rpmr-form select.rpmr-touch-hover,
+.rpmr-form textarea.rpmr-touch-hover {
+  box-shadow: 0 6px 32px 0 var(--a, #7c3aed33), 0 0 0 2px var(--b, #22d3ee33);
+  transform: translateY(-2px) scale(1.03) rotate(-1deg);
+  background: linear-gradient(90deg, var(--a, #7c3aed) 0%, var(--b, #22d3ee) 100%) !important;
+  color: #fff;
+  border-color: var(--b, #22d3ee);
+}
+
+.rpmr-btn.rpmr-touch-hover::before,
+.rpmr-inline.rpmr-touch-hover::before,
+.rpmr-chip.rpmr-touch-hover::before,
+.rpmr-metric.rpmr-touch-hover::before,
+.rpmr-card.rpmr-touch-hover::before,
+.rpmr-project.rpmr-touch-hover::before,
+.rpmr-stack-item.rpmr-touch-hover::before,
+.rpmr-footlinks a.rpmr-touch-hover::before,
+.rpmr-pill.rpmr-touch-hover::before,
+.rpmr-side-cta a.rpmr-touch-hover::before {
+  width: 220%;
+  height: 220%;
+  opacity: 0.32;
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* Also support native :active states so taps immediately feel vibrant */
+.rpmr-btn:active,
+.rpmr-inline:active,
+.rpmr-chip:active,
+.rpmr-metric:active,
+.rpmr-card:active,
+.rpmr-project:active,
+.rpmr-stack-item:active,
+.rpmr-footlinks a:active,
+.rpmr-pill:active,
+.rpmr-side-cta a:active {
+  box-shadow: 0 6px 28px 0 var(--a, #7c3aed33), 0 0 0 2px var(--b, #22d3ee33) !important;
+  transform: translateY(-1px) scale(1.02) rotate(-0.5deg) !important;
+  background: linear-gradient(90deg, var(--a, #7c3aed) 0%, var(--b, #22d3ee) 100%) !important;
+  color: #fff !important;
+  border-color: var(--b, #22d3ee) !important;
+}
+
+.rpmr-btn:active::before,
+.rpmr-inline:active::before,
+.rpmr-chip:active::before,
+.rpmr-metric:active::before,
+.rpmr-card:active::before,
+.rpmr-project:active::before,
+.rpmr-stack-item:active::before,
+.rpmr-footlinks a:active::before,
+.rpmr-pill:active::before,
+.rpmr-side-cta a:active::before {
+  width: 180%;
+  height: 180%;
+  opacity: 0.28;
+  transform: translate(-50%, -50%) scale(1.02);
 }

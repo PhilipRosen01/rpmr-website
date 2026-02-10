@@ -51,6 +51,98 @@
   });
 })();
 
+// Insert literal separators between mobile menu links: Services | Projects
+(() => {
+  const buildSeparators = () => {
+    const menus = document.querySelectorAll('.rpmr-mobile-menu');
+    if (!menus.length) return;
+
+    menus.forEach((menu) => {
+      // Idempotent: remove previously inserted separators
+      menu.querySelectorAll('.rpmr-menu-sep').forEach((sep) => sep.remove());
+
+      // Only place separators between direct child links
+      const links = Array.from(menu.children).filter(
+        (el) => el.nodeType === 1 && el.matches('a')
+      );
+      if (links.length < 2) return;
+
+      links.forEach((link, index) => {
+        if (index === links.length - 1) return;
+        const sep = document.createElement('span');
+        sep.className = 'rpmr-menu-sep';
+        sep.setAttribute('aria-hidden', 'true');
+        sep.textContent = '|';
+        link.insertAdjacentElement('afterend', sep);
+      });
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', buildSeparators);
+  } else {
+    buildSeparators();
+  }
+
+  // Rebuild on resize in case markup changes across breakpoints.
+  let resizeTimer = null;
+  window.addEventListener('resize', () => {
+    if (resizeTimer) window.clearTimeout(resizeTimer);
+    resizeTimer = window.setTimeout(buildSeparators, 120);
+  });
+})();
+
+// Touch-hover simulation: adds `rpmr-touch-hover` to elements on touch so mobile
+// users see the same vibrant visuals as desktop hover. Respects prefers-reduced-motion.
+(() => {
+  const prefersReducedMotion = () =>
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (prefersReducedMotion()) return;
+  if (!('ontouchstart' in window)) return;
+
+  const interactiveSelector = '.rpmr-btn, .rpmr-inline, .rpmr-chip, .rpmr-metric, .rpmr-card, .rpmr-project, .rpmr-stack-item, .rpmr-footlinks a, .rpmr-pill, .rpmr-side-cta a, .rpmr-form input, .rpmr-form select, .rpmr-form textarea';
+
+  let activeElement = null;
+  let activeRow = null;
+  let clearTimer = null;
+
+  const clearHover = () => {
+    if (activeElement) activeElement.classList.remove('rpmr-touch-hover');
+    if (activeRow) activeRow.classList.remove('rpmr-touch-hover');
+    activeElement = null;
+    activeRow = null;
+    if (clearTimer) { clearTimeout(clearTimer); clearTimer = null; }
+  };
+
+  const onTouchStart = (event) => {
+    const target = event.target.closest(interactiveSelector);
+    if (!target) return;
+
+    // Apply class to the touched element
+    activeElement = target;
+    activeElement.classList.add('rpmr-touch-hover');
+
+    // If it's inside a project-row, also add to the row to mimic group hover
+    const row = target.closest('.rpmr-project-row');
+    if (row) { activeRow = row; activeRow.classList.add('rpmr-touch-hover'); }
+
+    if (clearTimer) { clearTimeout(clearTimer); clearTimer = null; }
+    // Keep the visual for a short duration; remove shortly after touchend
+    clearTimer = setTimeout(clearHover, 900);
+  };
+
+  const onTouchEnd = () => {
+    if (clearTimer) { clearTimeout(clearTimer); }
+    clearTimer = setTimeout(clearHover, 140);
+  };
+
+  document.addEventListener('touchstart', onTouchStart, { passive: true });
+  document.addEventListener('touchend', onTouchEnd, { passive: true });
+  document.addEventListener('touchcancel', clearHover, { passive: true });
+  document.addEventListener('scroll', clearHover, { passive: true });
+})();
+
 // Smooth-scroll for in-page anchors (more reliable than CSS alone)
 (() => {
   const prefersReducedMotion = () =>
