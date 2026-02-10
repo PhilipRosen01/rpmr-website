@@ -144,6 +144,14 @@
   transform: translateY(-1px);
 }
 
+/* Touch devices: JS toggles this class to mimic persistent hover */
+.rpmr-navlinks a.rpmr-touch-hover {
+  color: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}
+
 /* Pill-shaped focus rings (avoid default square outlines on click/focus) */
 .rpmr-navlinks a:focus,
 .rpmr-navlinks a:focus-visible {

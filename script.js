@@ -98,67 +98,89 @@
   });
 })();
 
-// Touch-hover simulation: adds `rpmr-touch-hover` to elements on touch so mobile
-// users see the same vibrant visuals as desktop hover. Respects prefers-reduced-motion.
+// Touch-hover simulation: on touch devices, tap toggles a persistent
+// `rpmr-touch-hover` state (stays until you tap elsewhere or tap again).
+// Respects prefers-reduced-motion.
 (() => {
   const prefersReducedMotion = () =>
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   if (prefersReducedMotion()) return;
-  if (!('ontouchstart' in window)) return;
 
-  const interactiveSelector = '.rpmr-btn, .rpmr-inline, .rpmr-chip, .rpmr-metric, .rpmr-card, .rpmr-project, .rpmr-stack-item, .rpmr-footlinks a, .rpmr-pill, .rpmr-side-cta a, .rpmr-form input, .rpmr-form select, .rpmr-form textarea';
+  const isCoarsePointer = () =>
+    window.matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window;
+
+  if (!isCoarsePointer()) return;
+
+  const interactiveSelector =
+    '.rpmr-btn, .rpmr-inline, .rpmr-chip, .rpmr-metric, .rpmr-card, .rpmr-project, .rpmr-stack-item, .rpmr-footlinks a, .rpmr-pill, .rpmr-side-cta a, .rpmr-navlinks a, .rpmr-form input, .rpmr-form select, .rpmr-form textarea';
 
   let activeElement = null;
   let activeRow = null;
-  let clearTimer = null;
 
   const clearHover = () => {
     if (activeElement) activeElement.classList.remove('rpmr-touch-hover');
     if (activeRow) activeRow.classList.remove('rpmr-touch-hover');
     activeElement = null;
     activeRow = null;
-    if (clearTimer) { clearTimeout(clearTimer); clearTimer = null; }
   };
 
-  const onTouchStart = (event) => {
-    const target = event.target.closest(interactiveSelector);
-    if (!target) return;
-
-    // Apply class to the touched element
+  const setHover = (target) => {
+    clearHover();
     activeElement = target;
     activeElement.classList.add('rpmr-touch-hover');
 
-    // If it's inside a project-row, also add to the row to mimic group hover
     const row = target.closest('.rpmr-project-row');
-    if (row) { activeRow = row; activeRow.classList.add('rpmr-touch-hover'); }
-
-    if (clearTimer) { clearTimeout(clearTimer); clearTimer = null; }
-    // Keep the visual for a short duration; remove shortly after touchend
-    clearTimer = setTimeout(clearHover, 900);
+    if (row) {
+      activeRow = row;
+      activeRow.classList.add('rpmr-touch-hover');
+    }
   };
 
-  const onTouchEnd = () => {
-    if (clearTimer) { clearTimeout(clearTimer); }
-    clearTimer = setTimeout(clearHover, 140);
+  const toggleFromEventTarget = (eventTarget) => {
+    const target = eventTarget?.closest?.(interactiveSelector);
+
+    if (!target) {
+      // Tapping anywhere else clears the active state
+      clearHover();
+      return;
+    }
+
+    // Tapping the same element again toggles it off
+    if (activeElement === target) {
+      clearHover();
+      return;
+    }
+
+    setHover(target);
   };
 
-  document.addEventListener('touchstart', onTouchStart, { passive: true });
-  document.addEventListener('touchend', onTouchEnd, { passive: true });
-  document.addEventListener('touchcancel', clearHover, { passive: true });
-  let scrollTicking = false;
-  window.addEventListener(
-    'scroll',
-    () => {
-      if (scrollTicking) return;
-      scrollTicking = true;
-      window.requestAnimationFrame(() => {
-        clearHover();
-        scrollTicking = false;
-      });
-    },
-    { passive: true }
-  );
+  // Prefer pointer events (modern iOS/Android); fallback to touchstart.
+  if ('PointerEvent' in window) {
+    document.addEventListener(
+      'pointerdown',
+      (e) => {
+        if (e.pointerType !== 'touch' && e.pointerType !== 'pen') return;
+        toggleFromEventTarget(e.target);
+      },
+      { passive: true }
+    );
+
+    document.addEventListener('pointercancel', clearHover, { passive: true });
+  } else {
+    document.addEventListener(
+      'touchstart',
+      (e) => toggleFromEventTarget(e.target),
+      { passive: true }
+    );
+    document.addEventListener('touchcancel', clearHover, { passive: true });
+  }
+
+  // Allow users to clear the state via Escape when an external keyboard is used.
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    clearHover();
+  });
 })();
 
 // Smooth-scroll for in-page anchors (more reliable than CSS alone)
