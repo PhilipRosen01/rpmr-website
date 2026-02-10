@@ -8,6 +8,18 @@
   Require all denied
 </FilesMatch>
 
+# X-Robots-Tag (HTTP header)
+# Default: prevent indexing of non-main pages. Allow only the homepage.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html|php)$">
+    Header set X-Robots-Tag "noindex, nofollow, noarchive"
+  </FilesMatch>
+
+  <Files "index.html">
+    Header set X-Robots-Tag "index, follow"
+  </Files>
+</IfModule>
+
 # Canonicalize URLs (SEO): force HTTPS + non-WWW + remove explicit /index.html
 RewriteEngine On
 
