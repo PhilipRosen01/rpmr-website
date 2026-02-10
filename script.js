@@ -146,7 +146,19 @@
   document.addEventListener('touchstart', onTouchStart, { passive: true });
   document.addEventListener('touchend', onTouchEnd, { passive: true });
   document.addEventListener('touchcancel', clearHover, { passive: true });
-  document.addEventListener('scroll', clearHover, { passive: true });
+  let scrollTicking = false;
+  window.addEventListener(
+    'scroll',
+    () => {
+      if (scrollTicking) return;
+      scrollTicking = true;
+      window.requestAnimationFrame(() => {
+        clearHover();
+        scrollTicking = false;
+      });
+    },
+    { passive: true }
+  );
 })();
 
 // Smooth-scroll for in-page anchors (more reliable than CSS alone)
@@ -207,6 +219,14 @@
 
 // Creative animated cursor effect
 (() => {
+  const prefersReducedMotion = () =>
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Only render the cursor on real desktops/laptops.
+  // On touch devices this can cause unnecessary paints and jank.
+  if (prefersReducedMotion()) return;
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
   // Create the custom cursor element
   const cursor = document.createElement('div');
   cursor.id = 'rpmr-cursor';
