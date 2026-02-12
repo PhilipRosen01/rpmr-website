@@ -291,7 +291,9 @@
   max-width: 46ch;
 }
 
-.rpmr-contact-intro h3 {
+.rpmr-contact-intro h2 {
+  /* semantic: Contact block uses an h2, but keep the previous visual weight/size */
+  font-size: var(--rpmr-fs-h3);
   line-height: 1.08;
   letter-spacing: -0.03em;
 }

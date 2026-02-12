@@ -116,7 +116,7 @@
   padding: 16px;
 }
 
-#services .rpmr-grid3 > .rpmr-card h4 {
+#services .rpmr-grid3 > .rpmr-card h3 {
   margin-bottom: 6px;
 }
 
@@ -262,8 +262,10 @@
   opacity: 1;
 }
 
-.rpmr-card h4 {
-  /* inherit global h4 sizing from base.css */
+.rpmr-card h3 {
+  /* semantic: cards use h3, but keep the previous h4 visual size */
+  font-size: var(--rpmr-fs-h4);
+  line-height: var(--rpmr-lh-h4);
   margin: 0 0 8px;
 }
 
