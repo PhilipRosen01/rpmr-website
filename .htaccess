@@ -20,6 +20,11 @@
   </Files>
 </IfModule>
 
+# Ensure correct MIME type for favicon.ico
+<IfModule mod_mime.c>
+  AddType image/x-icon .ico
+</IfModule>
+
 # Canonicalize URLs (SEO): force HTTPS + non-WWW + remove explicit /index.html
 RewriteEngine On
 
