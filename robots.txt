@@ -1,0 +1,8 @@
+# robots.txt for https://rpmrcreations.com/
+# Note: Indexing is controlled primarily via meta robots + X-Robots-Tag headers.
+
+User-agent: *
+Allow: /
+
+# If/when you add a sitemap, keep this updated.
+Sitemap: https://rpmrcreations.com/sitemap.xml
