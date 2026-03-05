@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Projects | RPMR Creations</title>
+
+    <meta
+      name="description"
+      content="Projects by RPMR Creations — apps shipped to the App Store and products currently in development."
+    />
+
+    <link rel="canonical" href="https://rpmrcreations.com/projects.html" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+
+    <!-- Font (readable + modern) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Site icon (favicon) -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="icon" type="image/png" sizes="28x28" href="/assets/images/rpmr-logo-28x28-circular.png" />
+    <link rel="apple-touch-icon" href="/assets/images/rpmr-logo-28x28-circular.png" />
+
+    <!-- Social preview (Open Graph / Twitter Card) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Projects | RPMR Creations" />
+    <meta
+      property="og:description"
+      content="Apps shipped by RPMR Creations and projects currently in development."
+    />
+    <meta property="og:image" content="/assets/images/rmpr-preview-img.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Projects | RPMR Creations" />
+    <meta
+      name="twitter:description"
+      content="Apps shipped by RPMR Creations and projects currently in development."
+    />
+    <meta name="twitter:image" content="/assets/images/rmpr-preview-img.png" />
+
+    <style>
+      .rpmr-projects-page {
+        padding: 40px 0 80px;
+      }
+
+      .rpmr-projects-hero {
+        padding: 10px 0 24px;
+      }
+
+      .rpmr-projects-hero h1 {
+        margin-top: 12px;
+        font-size: clamp(2.0rem, 4vw, 2.6rem);
+        letter-spacing: -0.02em;
+      }
+
+      .rpmr-projects-hero p {
+        margin-top: 10px;
+        color: rgba(255, 255, 255, 0.82);
+        line-height: 1.75;
+        max-width: 70ch;
+      }
+
+      .rpmr-projects-grid {
+        margin-top: 18px;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .rpmr-project-tile {
+        aspect-ratio: 1 / 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        text-align: center;
+        padding: 18px;
+        border-radius: var(--r);
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        box-shadow: var(--shadow2);
+        color: rgba(255, 255, 255, 0.95);
+        font-size: clamp(1.1rem, 2.1vw, 1.55rem);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        transition: transform 160ms ease, background-color 160ms ease, border-color 160ms ease;
+      }
+
+      .rpmr-project-tile:hover {
+        transform: translateY(-2px);
+        background: rgba(255, 255, 255, 0.07);
+        border-color: rgba(255, 255, 255, 0.18);
+      }
+
+      .rpmr-project-tile:focus-visible {
+        outline: 3px solid rgba(255, 255, 255, 0.35);
+        outline-offset: 3px;
+      }
+
+      @media (max-width: 720px) {
+        .rpmr-projects-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .rpmr-project-tile {
+          aspect-ratio: 4 / 3;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="rpmr-site" id="home">
+      <div class="rpmr-bg-glow" aria-hidden="true"></div>
+      <div class="rpmr-bg-grid" aria-hidden="true"></div>
+
+      <header class="rpmr-header">
+        <div class="rpmr-container rpmr-nav">
+          <a class="rpmr-brand" href="/">
+            <img
+              class="rpmr-logo"
+              src="/assets/images/rpmr-logo-no-creations.png"
+              alt="RPMR Creations"
+            />
+            <span class="rpmr-brandtext">
+              <span class="rpmr-brandname">RPMR CREATIONS</span>
+              <span class="rpmr-brandtag">Products • Tools • Solutions</span>
+            </span>
+          </a>
+
+          <nav class="rpmr-navlinks" aria-label="Primary" id="rpmr-navlinks">
+            <div class="rpmr-mobile-menu" id="rpmr-mobile-menu">
+              <a href="/">Home</a>
+              <a href="/projects.html">Projects</a>
+              <a href="/#services">Services</a>
+              <a href="/#process">Process</a>
+            </div>
+
+            <div class="rpmr-nav-actions">
+              <button
+                class="rpmr-burger"
+                type="button"
+                id="rpmr-burger"
+                aria-label="Menu"
+                aria-controls="rpmr-mobile-menu"
+                aria-expanded="false"
+              >
+                <span class="rpmr-burger-icon" aria-hidden="true">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </span>
+              </button>
+
+              <a class="rpmr-cta" href="/#contact" id="rpmr-nav-cta">Start a Project →</a>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+      <main class="rpmr-projects-page">
+        <div class="rpmr-container">
+          <section class="rpmr-projects-hero">
+            <div class="rpmr-kicker">What we ship</div>
+            <h1>Projects</h1>
+            <p>
+              A simple landing page for each of our projects.
+            </p>
+          </section>
+
+          <section class="rpmr-projects-grid" aria-label="Project list">
+            <a class="rpmr-project-tile" href="/projects/gridpics/" aria-label="Open GridPics project page">GridPics</a>
+            <a class="rpmr-project-tile" href="/projects/yayornay/" aria-label="Open YayOrNay project page">YayOrNay</a>
+          </section>
+        </div>
+      </main>
+
+      <footer class="rpmr-footer">
+        <div class="rpmr-container rpmr-foot">
+          <div class="rpmr-footlinks">
+            <a href="/">Home</a>
+            <a href="/projects.html">Projects</a>
+            <a href="/#contact">Contact</a>
+          </div>
+
+          <img
+            class="rpmr-footer-logo"
+            src="/assets/images/rpmr-logo-no-creations.png"
+            alt="RPMR Creations"
+            loading="lazy"
+          />
+
+          <div class="rpmr-footer-copy">© 2026 RPMR Creations.</div>
+        </div>
+      </footer>
+    </div>
+
+    <script src="/script.js"></script>
+  </body>
+</html>

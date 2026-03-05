@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>YayOrNay | RPMR Creations</title>
+
+    <meta
+      name="description"
+      content="YayOrNay by RPMR Creations — community voting, friends, and poll integrity."
+    />
+
+    <link rel="canonical" href="https://rpmrcreations.com/projects/yayornay" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/style.css" />
+
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="icon" type="image/png" sizes="28x28" href="/assets/images/rpmr-logo-28x28-circular.png" />
+    <link rel="apple-touch-icon" href="/assets/images/rpmr-logo-28x28-circular.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="YayOrNay | RPMR Creations" />
+    <meta
+      property="og:description"
+      content="A lightweight community voting app focused on daily engagement."
+    />
+    <meta property="og:image" content="/assets/images/rmpr-preview-img.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="YayOrNay | RPMR Creations" />
+    <meta
+      name="twitter:description"
+      content="A lightweight community voting app focused on daily engagement."
+    />
+    <meta name="twitter:image" content="/assets/images/rmpr-preview-img.png" />
+
+    <style>
+      .rpmr-project-page {
+        padding: 40px 0 80px;
+      }
+
+      .rpmr-project-hero {
+        padding: 10px 0 18px;
+      }
+
+      .rpmr-project-hero h1 {
+        margin-top: 12px;
+        font-size: clamp(2rem, 4vw, 2.6rem);
+        letter-spacing: -0.02em;
+      }
+
+      .rpmr-project-hero p {
+        margin-top: 10px;
+        color: rgba(255, 255, 255, 0.82);
+        line-height: 1.75;
+        max-width: 70ch;
+      }
+
+      .rpmr-project-actions {
+        margin-top: 16px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .rpmr-project-chip {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 14px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.05);
+        color: rgba(255, 255, 255, 0.9);
+        text-decoration: none;
+        font-size: 14px;
+        line-height: 1;
+      }
+
+      .rpmr-project-chip:hover {
+        background: rgba(255, 255, 255, 0.07);
+        border-color: rgba(255, 255, 255, 0.18);
+      }
+
+      .rpmr-project-card {
+        margin-top: 18px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--r);
+        box-shadow: var(--shadow2);
+        padding: 18px;
+      }
+
+      .rpmr-project-card h2 {
+        margin-top: 6px;
+        font-size: 20px;
+        line-height: 1.25;
+      }
+
+      .rpmr-project-card p {
+        margin-top: 10px;
+        color: rgba(255, 255, 255, 0.82);
+        line-height: 1.75;
+        max-width: 75ch;
+      }
+
+      .rpmr-screenshots {
+        margin-top: 18px;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .rpmr-shot {
+        border-radius: calc(var(--r) - 6px);
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(0, 0, 0, 0.18);
+        padding: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .rpmr-shot img {
+        width: 100%;
+        height: auto;
+        max-height: 720px;
+        object-fit: contain;
+        display: block;
+      }
+
+      @media (max-width: 920px) {
+        .rpmr-screenshots {
+          grid-template-columns: 1fr;
+        }
+
+        .rpmr-shot img {
+          max-height: 560px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="rpmr-site" id="home">
+      <div class="rpmr-bg-glow" aria-hidden="true"></div>
+      <div class="rpmr-bg-grid" aria-hidden="true"></div>
+
+      <header class="rpmr-header">
+        <div class="rpmr-container rpmr-nav">
+          <a class="rpmr-brand" href="/">
+            <img
+              class="rpmr-logo"
+              src="/assets/images/rpmr-logo-no-creations.png"
+              alt="RPMR Creations"
+            />
+            <span class="rpmr-brandtext">
+              <span class="rpmr-brandname">RPMR CREATIONS</span>
+              <span class="rpmr-brandtag">Products • Tools • Solutions</span>
+            </span>
+          </a>
+
+          <nav class="rpmr-navlinks" aria-label="Primary" id="rpmr-navlinks">
+            <div class="rpmr-mobile-menu" id="rpmr-mobile-menu">
+              <a href="/">Home</a>
+              <a href="/projects.html">Projects</a>
+              <a href="/#services">Services</a>
+              <a href="/#process">Process</a>
+            </div>
+
+            <div class="rpmr-nav-actions">
+              <button
+                class="rpmr-burger"
+                type="button"
+                id="rpmr-burger"
+                aria-label="Menu"
+                aria-controls="rpmr-mobile-menu"
+                aria-expanded="false"
+              >
+                <span class="rpmr-burger-icon" aria-hidden="true">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </span>
+              </button>
+
+              <a class="rpmr-cta" href="/#contact" id="rpmr-nav-cta">Start a Project →</a>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+      <main class="rpmr-project-page">
+        <div class="rpmr-container">
+          <section class="rpmr-project-hero">
+            <div class="rpmr-kicker">Mobile App</div>
+            <h1>YayOrNay</h1>
+            <p>
+              A lightweight community voting app focused on daily engagement. Users create an account,
+              vote in polls, and connect with friends — designed to be fast, simple, and fun.
+            </p>
+
+            <div class="rpmr-project-actions" aria-label="Project actions">
+              <a class="rpmr-project-chip" href="/projects.html">← Back to Projects</a>
+            </div>
+          </section>
+
+          <section class="rpmr-project-card" aria-label="YayOrNay overview">
+            <h2>Overview</h2>
+            <p>
+              Community voting • Friends • Poll integrity. Add store links and a short feature list here when you’re ready.
+            </p>
+          </section>
+
+          <section class="rpmr-project-card" aria-label="YayOrNay screenshots">
+            <h2>Screenshots</h2>
+            <div class="rpmr-screenshots">
+              <div class="rpmr-shot">
+                <img src="/assets/images/yayornay/01.png" alt="YayOrNay screenshot 1" loading="lazy" />
+              </div>
+              <div class="rpmr-shot">
+                <img src="/assets/images/yayornay/02.png" alt="YayOrNay screenshot 2" loading="lazy" />
+              </div>
+              <div class="rpmr-shot">
+                <img src="/assets/images/yayornay/03.png" alt="YayOrNay screenshot 3" loading="lazy" />
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <footer class="rpmr-footer">
+        <div class="rpmr-container rpmr-foot">
+          <div class="rpmr-footlinks">
+            <a href="/">Home</a>
+            <a href="/projects.html">Projects</a>
+            <a href="/#contact">Contact</a>
+          </div>
+
+          <img
+            class="rpmr-footer-logo"
+            src="/assets/images/rpmr-logo-no-creations.png"
+            alt="RPMR Creations"
+            loading="lazy"
+          />
+
+          <div class="rpmr-footer-copy">© 2026 RPMR Creations.</div>
+        </div>
+      </footer>
+    </div>
+
+    <script src="/script.js"></script>
+  </body>
+</html>

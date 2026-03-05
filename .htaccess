@@ -18,6 +18,10 @@
   <Files "index.html">
     Header set X-Robots-Tag "index, follow"
   </Files>
+
+  <Files "projects.html">
+    Header set X-Robots-Tag "index, follow"
+  </Files>
 </IfModule>
 
 # Ensure correct MIME type for favicon.ico
