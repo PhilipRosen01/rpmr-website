@@ -215,6 +215,90 @@
     }
     .scoring-card .label { color: var(--text-muted); font-size: .9rem; margin-top: .25rem; }
 
+    /* ── Scoring Details ──────────────────────────── */
+    .scoring-detail { margin-top: 3rem; }
+    .scoring-detail h3 {
+      text-align: center; font-size: 1.25rem; margin-bottom: .5rem;
+    }
+    .scoring-detail > p {
+      text-align: center; color: var(--text-muted); font-size: .95rem; margin-bottom: 1.5rem;
+    }
+    .tier-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem; margin-top: 1.5rem;
+    }
+    .tier-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); padding: 1rem; text-align: center;
+    }
+    .tier-card .tier-icon { font-size: 1.5rem; margin-bottom: .25rem; }
+    .tier-card .tier-icon ion-icon { font-size: 1.5rem; }
+    .tier-card .tier-name { font-weight: 700; font-size: .95rem; margin-bottom: .2rem; }
+    .tier-card .tier-range { color: var(--text-muted); font-size: .8rem; }
+
+    /* ── Grid Tabs ─────────────────────────────────── */
+    .grid-tabs {
+      display: flex; flex-wrap: wrap; gap: .5rem;
+      justify-content: center; margin-bottom: 1.5rem;
+    }
+    .grid-tab {
+      padding: .5rem 1rem; border-radius: 50px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      color: var(--text-muted); font-size: .85rem; font-weight: 600;
+      cursor: pointer; transition: all .2s;
+    }
+    .grid-tab:hover { border-color: var(--primary); color: var(--text); }
+    .grid-tab.active {
+      background: var(--primary); border-color: var(--primary);
+      color: #fff;
+    }
+    .grid-panel { display: none; }
+    .grid-panel.active { display: block; }
+    .grid-table {
+      width: 100%; border-collapse: collapse;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden;
+      font-size: .9rem;
+    }
+    .grid-table th {
+      background: var(--bg-elevated); color: var(--text); font-weight: 600;
+      padding: .75rem 1rem; text-align: left; border-bottom: 1px solid var(--border);
+    }
+    .grid-table td {
+      padding: .65rem 1rem; border-bottom: 1px solid var(--border); color: var(--text-muted);
+    }
+    .grid-table tr:last-child td { border-bottom: none; }
+    .grid-table .tier-cell { display: flex; align-items: center; gap: .4rem; }
+    .grid-table .tier-cell ion-icon { font-size: 1.1rem; flex-shrink: 0; }
+    .grid-table .points {
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary-light), var(--accent));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .grid-table .na { color: var(--text-muted); font-style: italic; opacity: .6; }
+    .grid-max {
+      text-align: center; margin-top: .75rem;
+      color: var(--text-muted); font-size: .85rem;
+    }
+    .grid-max strong {
+      background: linear-gradient(135deg, var(--primary-light), var(--accent));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .takeaways {
+      margin-top: 2.5rem; padding: 1.5rem;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+    .takeaways h4 { font-size: 1rem; margin-bottom: .75rem; }
+    .takeaways ul { list-style: none; padding: 0; }
+    .takeaways li {
+      color: var(--text-muted); font-size: .9rem; padding: .35rem 0;
+      padding-left: 1.5rem; position: relative;
+    }
+    .takeaways li::before {
+      content: '→'; position: absolute; left: 0; color: var(--primary-light);
+    }
+
     /* ── CTA ───────────────────────────────────────── */
     .cta {
       text-align: center;
@@ -410,6 +494,203 @@
         <div class="label">Puzzles to Create</div>
       </div>
     </div>
+
+    <!-- Score Tiers -->
+    <div class="scoring-detail">
+      <h3>Score Tiers</h3>
+      <p>Your tier is based on the percentage of tiles revealed when you guess correctly.</p>
+      <div class="tier-grid">
+        <div class="tier-card">
+          <div class="tier-icon"><ion-icon name="star-outline" style="color:#FDCB6E;"></ion-icon></div>
+          <div class="tier-name">Legendary</div>
+          <div class="tier-range">≤ 10% revealed</div>
+        </div>
+        <div class="tier-card">
+          <div class="tier-icon"><ion-icon name="flame-outline" style="color:#E94560;"></ion-icon></div>
+          <div class="tier-name">Amazing</div>
+          <div class="tier-range">≤ 25% revealed</div>
+        </div>
+        <div class="tier-card">
+          <div class="tier-icon"><ion-icon name="ribbon-outline" style="color:#A29BFE;"></ion-icon></div>
+          <div class="tier-name">Great</div>
+          <div class="tier-range">≤ 50% revealed</div>
+        </div>
+        <div class="tier-card">
+          <div class="tier-icon"><ion-icon name="thumbs-up-outline" style="color:#00B894;"></ion-icon></div>
+          <div class="tier-name">Good</div>
+          <div class="tier-range">≤ 75% revealed</div>
+        </div>
+        <div class="tier-card">
+          <div class="tier-icon"><ion-icon name="checkmark-circle-outline" style="color:#8888AA;"></ion-icon></div>
+          <div class="tier-name">Solved</div>
+          <div class="tier-range">&gt; 75% revealed</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Per-Grid Breakdown -->
+    <div class="scoring-detail">
+      <h3>Points by Grid Size</h3>
+      <p>Select a grid to see the full tier breakdown. Score = 50 base + 10 × remaining tiles.</p>
+      <div class="grid-tabs">
+        <button class="grid-tab active" data-grid="3">3×3</button>
+        <button class="grid-tab" data-grid="4">4×4</button>
+        <button class="grid-tab" data-grid="5">5×5</button>
+        <button class="grid-tab" data-grid="6">6×6</button>
+        <button class="grid-tab" data-grid="8">8×8</button>
+        <button class="grid-tab" data-grid="10">10×10</button>
+        <button class="grid-tab" data-grid="12">12×12</button>
+        <button class="grid-tab" data-grid="16">16×16</button>
+        <button class="grid-tab" data-grid="20">20×20</button>
+      </div>
+
+      <!-- 3×3 -->
+      <div class="grid-panel active" id="grid-3">
+        <table class="grid-table">
+          <thead><tr><th>Tier</th><th>Tiles Revealed</th><th>Points</th></tr></thead>
+          <tbody>
+            <tr><td><span class="tier-cell"><ion-icon name="star-outline" style="color:#FDCB6E;"></ion-icon> Legendary</span></td><td class="na">Not achievable (min 1 tile = 11.1%)</td><td class="na">—</td></tr>
+            <tr><td><span class="tier-cell"><ion-icon name="flame-outline" style="color:#E94560;"></ion-icon> Amazing</span></td><td>1–2 tiles</td><td class="points">130–120</td></tr>
+            <tr><td><span class="tier-cell"><ion-icon name="ribbon-outline" style="color:#A29BFE;"></ion-icon> Great</span></td><td>3–4 tiles</td><td class="points">110–100</td></tr>
+            <tr><td><span class="tier-cell"><ion-icon name="thumbs-up-outline" style="color:#00B894;"></ion-icon> Good</span></td><td>5–6 tiles</td><td class="points">90–80</td></tr>
+            <tr><td><span class="tier-cell"><ion-icon name="checkmark-circle-outline" style="color:#8888AA;"></ion-icon> Solved</span></td><td>7–9 tiles</td><td class="points">70–50</td></tr>
+          </tbody>
+        </table>
+        <p class="grid-max">Max score: <strong>130</strong></p>
+      </div>
+
+      <!-- 4×4 -->
+      <div class="grid-panel" id="grid-4">
+        <table class="grid-table">
+          <thead><tr><th>Tier</th><th>Tiles Revealed</th><th>Points</th></tr></thead>
+          <tbody>
+            <tr><td><span class="tier-cell"><ion-icon name="star-outline" style="color:#FDCB6E;"></ion-icon> Legendary</span></td><td>1 tile</td><td class="points">200</td></tr>
+            <tr><td><span class="tier-cell"><ion-icon name="flame-outline" style="color:#E94560;"></ion-icon> Amazing</span></td><td>2–4 tiles</td><td class="points">190–170</td></tr>
+            <tr><td><span class="tier-cell"><ion-icon name="ribbon-outline" style="color:#A29BFE;"></ion-icon> Great</span></td><td>5–8 tiles</td><td class="points">160–130</td></tr>
+            <tr><td><span class="tier-cell"><ion-icon name="thumbs-up-outline" style="color:#00B894;"></ion-icon> Good</span></td><td>9–12 tiles</td><td class="points">120–90</td></tr>
+            <tr><td><span class="tier-cell"><ion-icon name="checkmark-circle-outline" style="color:#8888AA;"></ion-icon> Solved</span></td><td>13–16 tiles</td><td class="points">80–50</td></tr>
+          </tbody>
+        </table>
+        <p class="grid-max">Max score: <strong>200</strong></p>
+      </div>
+
+      <!-- 5×5 -->
+      <div class="grid-panel" id="grid-5">
+        <table class="grid-table">
+          <thead><tr><th>Tier</th><th>Tiles Revealed</th><th>Points</th></tr></thead>
+          <tbody>
+            <tr><td><span class="tier-cell"><ion-icon name="star-outline" style="color:#FDCB6E;"></ion-icon> Legendary</span></td><td>1–2 tiles</td><td class="points">290–280</td></tr>
+            <tr><td><span class="tier-cell"><ion-icon name="flame-outline" style="color:#E94560;"></ion-icon> Amazing</span></td><td>3–6 tiles</td><td class="points">270–240</td></tr>
+            <tr><td><span class="tier-cell"><ion-icon name="ribbon-outline" style="color:#A29BFE;"></ion-icon> Great</span></td><td>7–12 tiles</td><td class="points">230–180</td></tr>
+            <tr><td><span class="tier-cell"><ion-icon name="thumbs-up-outline" style="color:#00B894;"></ion-icon> Good</span></td><td>13–18 tiles</td><td class="points">170–120</td></tr>
+            <tr><td><span class="tier-cell"><ion-icon name="checkmark-circle-outline" style="color:#8888AA;"></ion-icon> Solved</span></td><td>19–25 tiles</td><td class="points">110–50</td></tr>
+          </tbody>
+        </table>
+        <p class="grid-max">Max score: <strong>290</strong></p>
+      </div>
+
+      <!-- 6×6 -->
+      <div class="grid-panel" id="grid-6">
+        <table class="grid-table">
+          <thead><tr><th>Tier</th><th>Tiles Revealed</th><th>Points</th></tr></thead>
+          <tbody>
+            <tr><td><span class="tier-cell"><ion-icon name="star-outline" style="color:#FDCB6E;"></ion-icon> Legendary</span></td><td>1–3 tiles</td><td class="points">400–380</td></tr>
+            <tr><td><span class="tier-cell"><ion-icon name="flame-outline" style="color:#E94560;"></ion-icon> Amazing</span></td><td>4–9 tiles</td><td class="points">370–320</td></tr>
+            <tr><td><span class="tier-cell"><ion-icon name="ribbon-outline" style="color:#A29BFE;"></ion-icon> Great</span></td><td>10–18 tiles</td><td class="points">310–230</td></tr>
+            <tr><td><span class="tier-cell"><ion-icon name="thumbs-up-outline" style="color:#00B894;"></ion-icon> Good</span></td><td>19–27 tiles</td><td class="points">220–140</td></tr>
+            <tr><td><span class="tier-cell"><ion-icon name="checkmark-circle-outline" style="color:#8888AA;"></ion-icon> Solved</span></td><td>28–36 tiles</td><td class="points">130–50</td></tr>
+          </tbody>
+        </table>
+        <p class="grid-max">Max score: <strong>400</strong></p>
+      </div>
+
+      <!-- 8×8 -->
+      <div class="grid-panel" id="grid-8">
+        <table class="grid-table">
+          <thead><tr><th>Tier</th><th>Tiles Revealed</th><th>Points</th></tr></thead>
+          <tbody>
+            <tr><td><span class="tier-cell"><ion-icon name="star-outline" style="color:#FDCB6E;"></ion-icon> Legendary</span></td><td>1–6 tiles</td><td class="points">680–630</td></tr>
+            <tr><td><span class="tier-cell"><ion-icon name="flame-outline" style="color:#E94560;"></ion-icon> Amazing</span></td><td>7–16 tiles</td><td class="points">620–530</td></tr>
+            <tr><td><span class="tier-cell"><ion-icon name="ribbon-outline" style="color:#A29BFE;"></ion-icon> Great</span></td><td>17–32 tiles</td><td class="points">520–370</td></tr>
+            <tr><td><span class="tier-cell"><ion-icon name="thumbs-up-outline" style="color:#00B894;"></ion-icon> Good</span></td><td>33–48 tiles</td><td class="points">360–210</td></tr>
+            <tr><td><span class="tier-cell"><ion-icon name="checkmark-circle-outline" style="color:#8888AA;"></ion-icon> Solved</span></td><td>49–64 tiles</td><td class="points">200–50</td></tr>
+          </tbody>
+        </table>
+        <p class="grid-max">Max score: <strong>680</strong></p>
+      </div>
+
+      <!-- 10×10 -->
+      <div class="grid-panel" id="grid-10">
+        <table class="grid-table">
+          <thead><tr><th>Tier</th><th>Tiles Revealed</th><th>Points</th></tr></thead>
+          <tbody>
+            <tr><td><span class="tier-cell"><ion-icon name="star-outline" style="color:#FDCB6E;"></ion-icon> Legendary</span></td><td>1–10 tiles</td><td class="points">1,040–940</td></tr>
+            <tr><td><span class="tier-cell"><ion-icon name="flame-outline" style="color:#E94560;"></ion-icon> Amazing</span></td><td>11–25 tiles</td><td class="points">930–800</td></tr>
+            <tr><td><span class="tier-cell"><ion-icon name="ribbon-outline" style="color:#A29BFE;"></ion-icon> Great</span></td><td>26–50 tiles</td><td class="points">790–550</td></tr>
+            <tr><td><span class="tier-cell"><ion-icon name="thumbs-up-outline" style="color:#00B894;"></ion-icon> Good</span></td><td>51–75 tiles</td><td class="points">540–300</td></tr>
+            <tr><td><span class="tier-cell"><ion-icon name="checkmark-circle-outline" style="color:#8888AA;"></ion-icon> Solved</span></td><td>76–100 tiles</td><td class="points">290–50</td></tr>
+          </tbody>
+        </table>
+        <p class="grid-max">Max score: <strong>1,040</strong></p>
+      </div>
+
+      <!-- 12×12 -->
+      <div class="grid-panel" id="grid-12">
+        <table class="grid-table">
+          <thead><tr><th>Tier</th><th>Tiles Revealed</th><th>Points</th></tr></thead>
+          <tbody>
+            <tr><td><span class="tier-cell"><ion-icon name="star-outline" style="color:#FDCB6E;"></ion-icon> Legendary</span></td><td>1–14 tiles</td><td class="points">1,480–1,350</td></tr>
+            <tr><td><span class="tier-cell"><ion-icon name="flame-outline" style="color:#E94560;"></ion-icon> Amazing</span></td><td>15–36 tiles</td><td class="points">1,340–1,130</td></tr>
+            <tr><td><span class="tier-cell"><ion-icon name="ribbon-outline" style="color:#A29BFE;"></ion-icon> Great</span></td><td>37–72 tiles</td><td class="points">1,120–770</td></tr>
+            <tr><td><span class="tier-cell"><ion-icon name="thumbs-up-outline" style="color:#00B894;"></ion-icon> Good</span></td><td>73–108 tiles</td><td class="points">760–410</td></tr>
+            <tr><td><span class="tier-cell"><ion-icon name="checkmark-circle-outline" style="color:#8888AA;"></ion-icon> Solved</span></td><td>109–144 tiles</td><td class="points">400–50</td></tr>
+          </tbody>
+        </table>
+        <p class="grid-max">Max score: <strong>1,480</strong></p>
+      </div>
+
+      <!-- 16×16 -->
+      <div class="grid-panel" id="grid-16">
+        <table class="grid-table">
+          <thead><tr><th>Tier</th><th>Tiles Revealed</th><th>Points</th></tr></thead>
+          <tbody>
+            <tr><td><span class="tier-cell"><ion-icon name="star-outline" style="color:#FDCB6E;"></ion-icon> Legendary</span></td><td>1–25 tiles</td><td class="points">2,600–2,360</td></tr>
+            <tr><td><span class="tier-cell"><ion-icon name="flame-outline" style="color:#E94560;"></ion-icon> Amazing</span></td><td>26–64 tiles</td><td class="points">2,350–1,970</td></tr>
+            <tr><td><span class="tier-cell"><ion-icon name="ribbon-outline" style="color:#A29BFE;"></ion-icon> Great</span></td><td>65–128 tiles</td><td class="points">1,960–1,330</td></tr>
+            <tr><td><span class="tier-cell"><ion-icon name="thumbs-up-outline" style="color:#00B894;"></ion-icon> Good</span></td><td>129–192 tiles</td><td class="points">1,320–690</td></tr>
+            <tr><td><span class="tier-cell"><ion-icon name="checkmark-circle-outline" style="color:#8888AA;"></ion-icon> Solved</span></td><td>193–256 tiles</td><td class="points">680–50</td></tr>
+          </tbody>
+        </table>
+        <p class="grid-max">Max score: <strong>2,600</strong></p>
+      </div>
+
+      <!-- 20×20 -->
+      <div class="grid-panel" id="grid-20">
+        <table class="grid-table">
+          <thead><tr><th>Tier</th><th>Tiles Revealed</th><th>Points</th></tr></thead>
+          <tbody>
+            <tr><td><span class="tier-cell"><ion-icon name="star-outline" style="color:#FDCB6E;"></ion-icon> Legendary</span></td><td>1–40 tiles</td><td class="points">4,040–3,650</td></tr>
+            <tr><td><span class="tier-cell"><ion-icon name="flame-outline" style="color:#E94560;"></ion-icon> Amazing</span></td><td>41–100 tiles</td><td class="points">3,640–3,050</td></tr>
+            <tr><td><span class="tier-cell"><ion-icon name="ribbon-outline" style="color:#A29BFE;"></ion-icon> Great</span></td><td>101–200 tiles</td><td class="points">3,040–2,050</td></tr>
+            <tr><td><span class="tier-cell"><ion-icon name="thumbs-up-outline" style="color:#00B894;"></ion-icon> Good</span></td><td>201–300 tiles</td><td class="points">2,040–1,050</td></tr>
+            <tr><td><span class="tier-cell"><ion-icon name="checkmark-circle-outline" style="color:#8888AA;"></ion-icon> Solved</span></td><td>301–400 tiles</td><td class="points">1,040–50</td></tr>
+          </tbody>
+        </table>
+        <p class="grid-max">Max score: <strong>4,040</strong></p>
+      </div>
+    </div>
+
+    <!-- Key Takeaways -->
+    <div class="takeaways">
+      <h4>Key Takeaways</h4>
+      <ul>
+        <li>Legendary tier is impossible on 3×3 — even 1 tile already exceeds the 10% threshold</li>
+        <li>Max possible score scales dramatically: 130 (3×3) → 4,040 (20×20)</li>
+        <li>Every grid size always has a minimum score of 50 (base points with no bonus)</li>
+        <li>Bigger grids reward early guesses far more — a first-tile guess on 20×20 earns 31× the base!</li>
+      </ul>
+    </div>
+
   </div>
 </section>
 
@@ -444,6 +725,18 @@
     </div>
   </div>
 </footer>
+
+<!-- Grid tab switching -->
+<script>
+  document.querySelectorAll('.grid-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.grid-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.grid-panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById('grid-' + tab.dataset.grid).classList.add('active');
+    });
+  });
+</script>
 
 <!-- Ionicons (same icon set used in @expo/vector-icons) -->
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
